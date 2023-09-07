@@ -1,5 +1,5 @@
-import { Icon } from '@/components/general/icon/icon'
+import AddAd from '@/components/add-ad/add-ad'
 
 export default function AddAdPage() {
-  return <div className='container'>add ad page</div>
+  return <AddAd />
 }
