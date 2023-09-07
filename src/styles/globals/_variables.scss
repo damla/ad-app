@@ -1,0 +1,150 @@
+// Breakpoint Variables
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-xxl: 1536px;
+
+// Colors - BASIC
+$primary-color: #3b82f6;
+$secondary-color: #9ca3af;
+$warning-color: #f59e0b;
+$error-color: #ef4444;
+$success-color: #10b981;
+
+// Colors - TEXT
+$text-color: #111827;
+$text-color-secondary: #4b5563;
+$text-color-light-grey: #9ca3af;
+$text-color-white: #ffffff;
+$text-color-lighter-grey: #d1d5db;
+$heading-color: #111827;
+$label-required-color: $error-color;
+
+// Colors - BACKGROUND
+$background-color: #ffffff;
+$background-color-light: #f3f4f6;
+$background-color-grey: #e5e7eb;
+$success-bg: #f0fdf4;
+$error-bg: #fef2f2;
+$dropdown-icon-hover-bg: #e5e7eb;
+
+// Colors - BORDERS
+$border-primary-grey: #d1d5db;
+$border-secondary-grey: #e5e7eb;
+$input-border-color: #9ca3af;
+$dropdown-border-color: #6b7280;
+$divider-color: #e5e7eb;
+$border-success-message: #6ee7b7;
+$border-error-message: #f87171;
+
+// TYPOGRAPHY - TEXT
+$font-size-xxs: 0.75rem; // 12px
+$line-height-xxs: 1rem; // 16px
+
+$font-size-xs: 0.875rem; // 14px
+$line-height-xs: 1.25rem; // 20px
+
+$font-size-base: 1rem; // 16px
+$line-height-base: 1.5rem; // 24px
+
+$font-size-lg: 1.125rem; // 18px
+$line-height-lg: 1.75rem; // 28px
+
+$font-size-xl: 1.25rem; // 20px
+$line-height-xl: 1.75rem; // 28px
+
+$font-size-2xl: 1.5rem; // 24px
+$line-height-2xl: 2rem; // 32px
+
+$font-size-3xl: 1.875rem; // 30px
+$line-height-3xl: 2.25rem; // 36px
+
+$font-size-4xl: 2.25rem; // 36px
+$line-height-4xl: 2.5rem; // 40pxS
+
+// TYPOGRAPHY - HEADINGS
+$heading-1-size: 2.25rem; // 36px, close to Tailwind's text-3xl
+$heading-2-size: 1.875rem; // 30px, close to Tailwind's text-2xl
+$heading-3-size: 1.5rem; // 24px, Tailwind's text-xl
+$heading-4-size: 1.25rem; // 20px, Tailwind's text-lg
+$heading-5-size: 1rem; // 16px, Tailwind's text-base
+$heading-xl-size: 3rem; // 48px, close to Tailwind's text-4xl
+$heading-xl-line-height: 3.5rem; // 56px, for a bit more spacing at larger sizes
+
+// Font WEIGHT
+$font-weight-light: 300; // Tailwind's font-light
+$font-weight-normal: 400; // Tailwind's font-normal
+$font-weight-medium: 500; // Tailwind's font-medium
+$font-weight-bold: 700; // Tailwind's font-bold
+
+// BUTTONS
+// Border
+$border-color-base: #e5e7eb; // Using Tailwind's gray-300
+
+// Button Base
+$btn-height-base: 2.5rem; // 40px
+$btn-height-lg: 3rem; // 48px
+$btn-height-sm: 2rem; // 32px
+
+$btn-padding-horizontal-base: 1rem; // 16px
+$btn-padding-horizontal-sm: 0.5rem; // 8px
+$btn-padding-horizontal-lg: 1.5rem; // 24px
+$btn-padding-horizontal-xl: 2rem; // 32px
+
+$btn-font-size-sm: 0.875rem; // 14px
+
+$btn-border-radius-base: 0.25rem;
+$btn-border-radius-sm: 0.125rem;
+$btn-border-radius-md: 0.375rem;
+
+$btn-background: $background-color;
+$btn-background-hover: $background-color-light;
+$btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Slight shadow for depth
+$btn-primary-shadow: 0 4px 6px rgba(59, 130, 246, 0.2); // Shadow using blue-500
+$btn-disable-border: #d1d5db; // Using Tailwind's gray-400
+
+// Card
+$card-radius: 0.5rem; // 8px, Tailwind's rounded-md
+$card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06); // Tailwind's shadow-md
+
+// SPACING
+$space-5xl: 3.5rem; // 56px
+$space-4xl: 2.5rem; // 40px
+$space-3xl: 2rem; // 32px
+$space-2xl: 1.5rem; // 24px
+$space-xl: 1.25rem; // 20px
+$space-lg: 1rem; // 16px, typically the base size in many designs
+$space-md: 0.75rem; // 12px
+$space-sm: 0.5rem; // 8px
+$space-xs: 0.25rem; // 4px
+$space-xxs: 0.125rem; // 2px
+
+// FOR MARGIN, PADDING AND GAP
+$spaces: (
+  '5xl': $space-5xl,
+  '4xl': $space-4xl,
+  '3xl': $space-3xl,
+  '2xl': $space-2xl,
+  'xl': $space-xl,
+  'lg': $space-lg,
+  'md': $space-md,
+  'sm': $space-sm,
+  'xs': $space-xs,
+  'xxs': $space-xxs
+);
+
+// Layout and components using the above spacings
+$layout-header-padding: 0 $space-2xl;
+$input-padding-vertical-base: $space-sm;
+$collapse-header-padding: $space-xs $space-md;
+$typography-title-margin-top: $space-xs;
+$typography-title-margin-bottom: $space-xs;
+$message-notice-content-padding: $space-sm $space-lg;
+
+// HEIGHTS
+$navbar-height: 120px;
+$navbar-mobile-height: 80px;
+$input-height-base: 42px;
+$message-height: 17px;

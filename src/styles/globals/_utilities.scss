@@ -1,0 +1,190 @@
+// TEXT UTILITIES
+.primaryText {
+  color: $text-color;
+}
+
+.secondaryText {
+  color: $text-color-secondary;
+}
+
+.headingText {
+  color: $heading-color;
+}
+
+.errorText {
+  color: $error-color;
+}
+
+.xxlText {
+  display: block;
+  font-size: $font-size-2xl;
+  line-height: $line-height-2xl;
+}
+
+.xlText {
+  display: block;
+  font-size: $font-size-xl;
+  line-height: $line-height-xl;
+}
+
+.lgText {
+  display: block;
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+}
+
+.xsText {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+}
+
+.xxsText {
+  font-size: $font-size-xxs;
+  line-height: $line-height-xxs;
+}
+
+.fontWeightLight {
+  font-weight: $font-weight-light;
+}
+
+.fontWeightNormal {
+  font-weight: $font-weight-normal;
+}
+
+.fontWeightMedium {
+  font-weight: $font-weight-medium;
+}
+
+.fontWeightBold {
+  font-weight: $font-weight-bold;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+// MARGIN UTILITIES
+@each $name, $size in $spaces {
+  .m-#{$name} {
+    margin: $size;
+  }
+  .mt-#{$name} {
+    margin-top: $size;
+  }
+  .mb-#{$name} {
+    margin-bottom: $size;
+  }
+  .ml-#{$name} {
+    margin-left: $size;
+  }
+  .mr-#{$name} {
+    margin-right: $size;
+  }
+  .mx-#{$name} {
+    margin-left: $size;
+    margin-right: $size;
+  }
+  .my-#{$name} {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+}
+
+// PADDING UTILITIES
+@each $name, $size in $spaces {
+  .p-#{$name} {
+    padding: $size;
+  }
+  .pt-#{$name} {
+    padding-top: $size;
+  }
+  .pb-#{$name} {
+    padding-bottom: $size;
+  }
+  .pl-#{$name} {
+    padding-left: $size;
+  }
+  .pr-#{$name} {
+    padding-right: $size;
+  }
+  .px-#{$name} {
+    padding-left: $size;
+    padding-right: $size;
+  }
+  .py-#{$name} {
+    padding-top: $size;
+    padding-bottom: $size;
+  }
+}
+
+// GAP UTILITIES
+@each $name, $size in $spaces {
+  .gap-#{$name} {
+    gap: $size;
+  }
+}
+
+// Gap utilities for rows
+@each $name, $size in $spaces {
+  .gap-y-#{$name} {
+    row-gap: $size;
+  }
+}
+
+// Gap utilities for columns
+@each $name, $size in $spaces {
+  .gap-x-#{$name} {
+    column-gap: $size;
+  }
+}
+
+// GENERAL STYLING UTILITIES
+.clickable {
+  cursor: pointer;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.centerAlignedItems {
+  display: flex;
+  align-items: center;
+}
+
+.requiredField {
+  &::before {
+    color: $label-required-color;
+    content: '* ';
+  }
+}
+
+.cardShadow {
+  box-shadow: $card-shadow;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  @include sm {
+    max-width: $bp-sm;
+  }
+
+  @include md {
+    max-width: $bp-md;
+  }
+
+  @include lg {
+    max-width: $bp-lg;
+  }
+
+  @include xl {
+    max-width: $bp-xl;
+  }
+
+  @include xxl {
+    max-width: $bp-xxl;
+  }
+}
