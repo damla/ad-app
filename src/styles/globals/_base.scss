@@ -27,6 +27,7 @@ body {
 }
 
 a {
+  cursor: pointer;
   color: $text-color;
   text-decoration: none;
 
@@ -36,12 +37,10 @@ a {
   }
 }
 
-// Images
 img {
   vertical-align: middle;
 }
 
-// Typography
 h1,
 h2,
 h3,

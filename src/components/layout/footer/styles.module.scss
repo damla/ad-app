@@ -1,0 +1,12 @@
+@import '/src/styles/globals/variables';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-md 0;
+  color: $text-color-white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  background-color: $background-color-dark;
+}

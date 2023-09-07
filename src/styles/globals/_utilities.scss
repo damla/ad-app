@@ -65,26 +65,26 @@
 
 // MARGIN UTILITIES
 @each $name, $size in $spaces {
-  .m-#{$name} {
+  .m#{$name} {
     margin: $size;
   }
-  .mt-#{$name} {
+  .mt#{$name} {
     margin-top: $size;
   }
-  .mb-#{$name} {
+  .mb#{$name} {
     margin-bottom: $size;
   }
-  .ml-#{$name} {
+  .ml#{$name} {
     margin-left: $size;
   }
-  .mr-#{$name} {
+  .mr#{$name} {
     margin-right: $size;
   }
-  .mx-#{$name} {
+  .mx#{$name} {
     margin-left: $size;
     margin-right: $size;
   }
-  .my-#{$name} {
+  .my#{$name} {
     margin-top: $size;
     margin-bottom: $size;
   }
@@ -92,26 +92,26 @@
 
 // PADDING UTILITIES
 @each $name, $size in $spaces {
-  .p-#{$name} {
+  .p#{$name} {
     padding: $size;
   }
-  .pt-#{$name} {
+  .pt#{$name} {
     padding-top: $size;
   }
-  .pb-#{$name} {
+  .pb#{$name} {
     padding-bottom: $size;
   }
-  .pl-#{$name} {
+  .pl#{$name} {
     padding-left: $size;
   }
-  .pr-#{$name} {
+  .pr#{$name} {
     padding-right: $size;
   }
-  .px-#{$name} {
+  .px#{$name} {
     padding-left: $size;
     padding-right: $size;
   }
-  .py-#{$name} {
+  .py#{$name} {
     padding-top: $size;
     padding-bottom: $size;
   }
@@ -119,21 +119,21 @@
 
 // GAP UTILITIES
 @each $name, $size in $spaces {
-  .gap-#{$name} {
+  .gap#{$name} {
     gap: $size;
   }
 }
 
 // Gap utilities for rows
 @each $name, $size in $spaces {
-  .gap-y-#{$name} {
+  .gapY#{$name} {
     row-gap: $size;
   }
 }
 
 // Gap utilities for columns
 @each $name, $size in $spaces {
-  .gap-x-#{$name} {
+  .gapX#{$name} {
     column-gap: $size;
   }
 }

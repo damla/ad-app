@@ -1,0 +1,23 @@
+@import '/src/styles/globals/variables';
+@import 'src/styles/globals/mixins';
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-lg $space-3xl;
+  background-color: $background-color-grey;
+
+  .logo {
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: $secondary-color;
+
+    @include sm {
+      width: 150px;
+    }
+  }
+}
