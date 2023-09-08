@@ -8,7 +8,7 @@
 
 .list {
   position: absolute;
-  z-index: 1;
+  z-index: $dropdown-z-index;
   right: 0;
   display: flex;
   flex-direction: column;

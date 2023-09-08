@@ -104,14 +104,28 @@ $btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Slight shadow for depth
 $btn-primary-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
 $btn-disable-border: #d1d5db;
 
+// Z-INDEX
+$action-button-z-index: 1;
+$dropdown-z-index: 2;
+
 // DROPDOWN
 $dropdown-radius: 0.25rem; // 4px
 $dropdown-item-background-hover: $background-color-light;
 
 // CARD
 $card-radius: 0.5rem; // 8px
+$card-minmax-width: 350px;
 $card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+// FAVORITE BUTTON
+$favorite-button-size: 30px;
+$favorite-button-fill-color: #f56565;
+
+// URGENT BADGE
+$urgent-badge-background-color: #ef4444;
+$urgent-badge-text-color: $text-color-white;
+$urgent-badge-hover-background-color: #dc2626;
 
 // SPACING
 $space-5xl: 3.5rem; // 56px

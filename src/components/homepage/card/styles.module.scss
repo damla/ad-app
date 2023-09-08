@@ -1,0 +1,107 @@
+@import '/src/styles/globals/variables';
+
+  .wrapper {
+    cursor: default;
+    overflow: hidden;
+    position: relative;
+    box-shadow: $card-shadow;
+    border-radius: $card-radius;
+    border: 1px solid $border-color-base;
+    background-color: $background-color;
+
+    .badge {
+      position: absolute;
+      z-index: $action-button-z-index;
+      top: $space-sm;
+      left: $space-sm;
+      display: inline-flex;
+      align-items: center;
+      gap: $space-xxs;
+      padding: 0 $space-sm;
+      border-radius: $btn-border-radius-md;
+      color: $urgent-badge-text-color;
+      background-color: $urgent-badge-background-color;
+      font-size: $font-size-xxs;
+
+      &:hover {
+        background-color: $urgent-badge-hover-background-color;
+      }
+    }
+
+    .buttonContainer {
+      position: absolute;
+      top: $space-sm;
+      right: $space-sm;
+      z-index: $action-button-z-index;
+      display: flex;
+      flex-direction: column;
+      gap: $space-xs;
+
+      .favoriteButton {
+        border-radius: 100%;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 $btn-padding-horizontal-xs;
+        height: $favorite-button-size;
+
+        &:hover {
+          svg {
+            fill: $favorite-button-fill-color;
+            stroke: $favorite-button-fill-color;
+          }
+        }
+      }
+
+      .trashButton {
+        border-radius: 100%;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 $btn-padding-horizontal-xs;
+        height: $favorite-button-size;
+
+        &:hover {
+          svg {
+            stroke: $border-error-message;
+          }
+        }
+
+        svg {
+          stroke: $error-color;
+        }
+      }
+
+      svg {
+        stroke-width: 1;
+      }
+    }
+
+    .imageWrapper {
+      position: relative;
+      width: 100%;
+      height: 230px;
+
+      .image {
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      padding: $space-md;
+
+      .title {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-medium;
+        margin-bottom: $space-xxs;
+      }
+
+      & > span {
+        display: inline-flex;
+        gap: 4px;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+        color: $text-color-secondary;
+      }
+    }
+  }
