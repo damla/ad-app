@@ -6,9 +6,9 @@
   flex-direction: column;
   flex: 1;
   align-items: center;
-  padding: $space-3xl;
+  padding: $main-padding;
 
   @include sm {
-    padding: 6rem;
+    padding: $main-desktop-padding;
   }
 }

@@ -28,13 +28,12 @@ $background-color-grey: #e5e7eb;
 $background-color-dark: #6b7280;
 $success-bg: #f0fdf4;
 $error-bg: #fef2f2;
-$dropdown-icon-hover-bg: #e5e7eb;
 
 // COLORS - BORDER
 $border-primary-grey: #d1d5db;
 $border-secondary-grey: #e5e7eb;
 $input-border-color: #9ca3af;
-$dropdown-border-color: #6b7280;
+$dropdown-border-color: #e5e7eb;
 $divider-color: #e5e7eb;
 $border-success-message: #6ee7b7;
 $border-error-message: #f87171;
@@ -105,6 +104,10 @@ $btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Slight shadow for depth
 $btn-primary-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
 $btn-disable-border: #d1d5db;
 
+// DROPDOWN
+$dropdown-radius: 0.25rem; // 4px
+$dropdown-item-background-hover: $background-color-light;
+
 // CARD
 $card-radius: 0.5rem; // 8px
 $card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -135,3 +138,7 @@ $spaces: (
   'Xs': $space-xs,
   'Xxs': $space-xxs
 );
+
+// COMPONENT PADDINGS
+$main-padding: $space-3xl;
+$main-desktop-padding: 6rem;

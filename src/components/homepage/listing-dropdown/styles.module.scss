@@ -1,6 +1,36 @@
 @import '/src/styles/globals/variables';
+@import '/src/styles/globals/mixins';
 
 .button {
   padding: 0 $btn-padding-horizontal-xs;
   height: 30px;
+}
+
+.list {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color-light;
+  border-radius: $dropdown-radius;
+  border: 1px solid $dropdown-border-color;
+
+  .listItem {
+    border-radius: $dropdown-radius;
+    border: unset;
+    padding: 0 $btn-padding-horizontal-base;
+
+    &:hover {
+      background-color: $dropdown-item-background-hover;
+    }
+
+    &:first-child {
+      border-bottom: 1px solid $dropdown-border-color;
+    }
+
+    @include sm {
+      padding: 0 $btn-padding-horizontal-xl;
+    }
+  }
 }
