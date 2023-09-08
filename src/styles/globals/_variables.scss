@@ -26,8 +26,8 @@ $background-color: #ffffff;
 $background-color-light: #f3f4f6;
 $background-color-grey: #e5e7eb;
 $background-color-dark: #6b7280;
-$success-bg: #f0fdf4;
 $error-bg: #fef2f2;
+$success-bg: #f0fdf4;
 
 // COLORS - BORDER
 $border-primary-grey: #d1d5db;
@@ -35,8 +35,8 @@ $border-secondary-grey: #e5e7eb;
 $input-border-color: #9ca3af;
 $dropdown-border-color: #e5e7eb;
 $divider-color: #e5e7eb;
-$border-success-message: #6ee7b7;
-$border-error-message: #f87171;
+$border-success-toast: #6ee7b7;
+$border-error-toast: #f87171;
 
 // TYPOGRAPHY - TEXT
 $font-size-xxs: 0.75rem; // 12px
@@ -107,6 +107,7 @@ $btn-disable-border: #d1d5db;
 // Z-INDEX
 $action-button-z-index: 1;
 $dropdown-z-index: 2;
+$toast-z-index: 3;
 
 // DROPDOWN
 $dropdown-radius: 0.25rem; // 4px
@@ -119,8 +120,12 @@ $card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
 // FAVORITE BUTTON
-$favorite-button-size: 30px;
+$action-button-size: 30px;
 $favorite-button-fill-color: #f56565;
+
+// DELETE BUTTON
+$delete-button-stroke-color: $error-color;
+$delete-button-hover-stroke-color: $border-error-toast;
 
 // URGENT BADGE
 $urgent-badge-background-color: #ef4444;
@@ -156,3 +161,4 @@ $spaces: (
 // COMPONENT PADDINGS
 $main-padding: $space-3xl;
 $main-desktop-padding: 6rem;
+$navbar-height: 82px;

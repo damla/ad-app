@@ -1,0 +1,21 @@
+@import '/src/styles/globals/variables';
+
+.wrapper {
+  position: absolute;
+  left: 50%;
+  z-index: $toast-z-index;
+  top: calc($navbar-height + $space-3xl);
+  transform: translateX(-50%);
+  padding: $space-sm $space-xl;
+  border-radius: $btn-border-radius-base;
+
+  &.success {
+    background-color: $success-bg;
+    border: 1px solid $border-success-toast;
+  }
+
+  &.error {
+    background-color: $error-bg;
+    border: 1px solid $border-error-toast;
+  }
+}

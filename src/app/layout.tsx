@@ -5,6 +5,8 @@ import Header from '@/components/layout/header/header'
 import { Inter } from 'next/font/google'
 import Main from '@/components/layout/main/main'
 import type { Metadata } from 'next'
+import Toast from '@/components/general/toast/toast'
+import { ToastContextProvider } from '@/context/toast.context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,12 +22,15 @@ interface Props {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
-        <Header />
-        <Main>{children}</Main>
-        <Footer />
-      </body>
-    </html>
+    <ToastContextProvider>
+      <html lang='en'>
+        <body className={inter.className}>
+          <Toast/>
+          <Header />
+          <Main>{children}</Main>
+          <Footer />
+        </body>
+      </html>
+    </ToastContextProvider>
   )
 }

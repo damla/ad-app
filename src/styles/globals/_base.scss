@@ -17,6 +17,7 @@ html {
 }
 
 body {
+  position: relative;
   background-color: $background-color;
   color: $text-color;
   font-size: $font-size-base;
