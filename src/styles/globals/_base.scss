@@ -17,6 +17,7 @@ html {
 }
 
 body {
+  position: relative;
   background-color: $background-color;
   color: $text-color;
   font-size: $font-size-base;
@@ -35,10 +36,6 @@ a {
     color: $text-color-secondary;
     text-decoration: underline;
   }
-}
-
-img {
-  vertical-align: middle;
 }
 
 h1,

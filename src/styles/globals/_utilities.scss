@@ -164,9 +164,9 @@
 }
 
 .container {
+  position: relative;
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
 
   @include sm {
     max-width: $bp-sm;

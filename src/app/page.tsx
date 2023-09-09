@@ -1,3 +1,5 @@
-export default function HomePage() {
-  return <div className='container'>home page</div>
+import HomePage from '@/components/homepage/homepage'
+
+export default function Home() {
+  return <HomePage />
 }

@@ -26,18 +26,17 @@ $background-color: #ffffff;
 $background-color-light: #f3f4f6;
 $background-color-grey: #e5e7eb;
 $background-color-dark: #6b7280;
-$success-bg: #f0fdf4;
 $error-bg: #fef2f2;
-$dropdown-icon-hover-bg: #e5e7eb;
+$success-bg: #f0fdf4;
 
 // COLORS - BORDER
 $border-primary-grey: #d1d5db;
 $border-secondary-grey: #e5e7eb;
 $input-border-color: #9ca3af;
-$dropdown-border-color: #6b7280;
+$dropdown-border-color: #e5e7eb;
 $divider-color: #e5e7eb;
-$border-success-message: #6ee7b7;
-$border-error-message: #f87171;
+$border-success-toast: #6ee7b7;
+$border-error-toast: #f87171;
 
 // TYPOGRAPHY - TEXT
 $font-size-xxs: 0.75rem; // 12px
@@ -87,6 +86,7 @@ $btn-height-base: 2.5rem; // 40px
 $btn-height-lg: 3rem; // 48px
 $btn-height-sm: 2rem; // 32px
 
+$btn-padding-horizontal-xs: 0.25rem; // 4px
 $btn-padding-horizontal-base: 1rem; // 16px
 $btn-padding-horizontal-sm: 0.5rem; // 8px
 $btn-padding-horizontal-lg: 1.5rem; // 24px
@@ -104,10 +104,33 @@ $btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Slight shadow for depth
 $btn-primary-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
 $btn-disable-border: #d1d5db;
 
+// Z-INDEX
+$action-button-z-index: 1;
+$dropdown-z-index: 2;
+$toast-z-index: 3;
+
+// DROPDOWN
+$dropdown-radius: 0.25rem; // 4px
+$dropdown-item-background-hover: $background-color-light;
+
 // CARD
 $card-radius: 0.5rem; // 8px
+$card-minmax-width: 350px;
 $card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+// FAVORITE BUTTON
+$action-button-size: 30px;
+$favorite-button-fill-color: #f56565;
+
+// DELETE BUTTON
+$delete-button-stroke-color: $error-color;
+$delete-button-hover-stroke-color: $border-error-toast;
+
+// URGENT BADGE
+$urgent-badge-background-color: #ef4444;
+$urgent-badge-text-color: $text-color-white;
+$urgent-badge-hover-background-color: #dc2626;
 
 // SPACING
 $space-5xl: 3.5rem; // 56px
@@ -127,10 +150,15 @@ $spaces: (
   '4xl': $space-4xl,
   '3xl': $space-3xl,
   '2xl': $space-2xl,
-  'xl': $space-xl,
-  'lg': $space-lg,
-  'md': $space-md,
-  'sm': $space-sm,
-  'xs': $space-xs,
-  'xxs': $space-xxs
+  'Xl': $space-xl,
+  'Lg': $space-lg,
+  'Md': $space-md,
+  'Sm': $space-sm,
+  'Xs': $space-xs,
+  'Xxs': $space-xxs
 );
+
+// COMPONENT PADDINGS
+$main-padding: $space-3xl;
+$main-desktop-padding: 6rem;
+$navbar-height: 82px;
