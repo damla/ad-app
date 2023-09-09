@@ -132,6 +132,11 @@ $urgent-badge-background-color: #ef4444;
 $urgent-badge-text-color: $text-color-white;
 $urgent-badge-hover-background-color: #dc2626;
 
+// SUBMIT BUTTON
+$submit-button-background-color: $success-color;
+$submit-button-text-color: $text-color-white;
+$submit-button-disabled-background-color: $border-success-toast;
+
 // SPACING
 $space-5xl: 3.5rem; // 56px
 $space-4xl: 2.5rem; // 40px

@@ -4,12 +4,23 @@ import {
   ADVERTISEMENT_DEFAULT_VALUES,
   ADVERTISEMENT_VALIDATION_SCHEMA
 } from './validation'
+import { ChangeEvent, useState } from 'react'
+import { set, useForm } from 'react-hook-form'
 
-import { ChangeEvent } from 'react'
-import { useForm } from 'react-hook-form'
+import Button from '@/components/general/button/button'
+import { Icon } from '@/components/general/icon/icon'
+import classNames from 'classnames'
+import styles from './styles.module.scss'
+import { useRouter } from 'next/navigation'
+import { useToast } from '@/hooks/use-toast'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 const AddAdvertisementForm: React.FC = () => {
+  const { showToast } = useToast()
+  const router = useRouter()
+
+  const [imageUploadLabel, setImageUploadLabel] = useState<string>('Yükle')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const formOptions = {
     resolver: yupResolver(ADVERTISEMENT_VALIDATION_SCHEMA),
     defaultValues: ADVERTISEMENT_DEFAULT_VALUES
@@ -22,27 +33,29 @@ const AddAdvertisementForm: React.FC = () => {
     formState,
     setValue,
     setError,
-    watch,
-    getValues
+    watch
   } = useForm(formOptions)
 
   const { errors } = formState
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true)
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0]
 
       // Check if file size exceeds 5MB
       if (file.size > 5 * 1024 * 1024) {
-        setError('imageUrl', { message: "Görsel boyutu 5MB'dan büyük olamaz." })
+        setError('imageUrl', { message: "Görsel boyutu 5MB'dan büyük olamaz" })
+        setIsLoading(false)
         return
       }
 
       // Check for accepted MIME types
       if (file.type !== 'image/png' && file.type !== 'image/jpeg') {
         setError('imageUrl', {
-          message: 'Lütfen png veya jpeg formatında görsel yükleyiniz.'
+          message: 'Lütfen png veya jpeg formatında görsel yükleyiniz'
         })
+        setIsLoading(false)
         return
       }
 
@@ -61,61 +74,102 @@ const AddAdvertisementForm: React.FC = () => {
 
         const data = await response.json()
         setValue('imageUrl', data.secure_url)
+        setImageUploadLabel(e.target.files[0].name)
+        setIsLoading(false)
       } catch (error) {
-        console.error(error)
+        setError('imageUrl', { message: 'Bir hata oluştu' })
+        setIsLoading(false)
       }
     }
   }
 
   const onSubmit = () => {
     const advertisementData = watch()
-    // addToLocalStorage(advertisementData)
+    // TODO: add advertisement to the database
 
     reset()
+    setImageUploadLabel('Yükle')
+    showToast(
+      'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
+      'success'
+    )
+    router.push('/')
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          {errors.title && <p>{errors.title.message}</p>}
-          <label htmlFor='title'>Your title</label>
-          <input
-            type='text'
-            id='title'
-            placeholder='Your title'
-            {...register('title')}
-          />
+    <>
+      <form onSubmit={handleSubmit(onSubmit)} className='centerAlignedItems'>
+        <div className={styles.formGroup}>
+          <div className={styles.titleFieldGroup}>
+            <label
+              htmlFor='title'
+              className={classNames({
+                ['requiredField']: errors.title,
+                ['mMd']: !errors.title
+              })}
+            >
+              İlan Başlığı
+            </label>
+            {errors.title && (
+              <span className={styles.errorMessage}>
+                {errors.title.message}
+              </span>
+            )}
+            <input
+              type='text'
+              id='title'
+              placeholder='örnek başlık'
+              className={styles.titleInput}
+              {...register('title')}
+            />
+          </div>
+          <div className={styles.imageFieldGroup}>
+            <div className={styles.imageLabel}>
+              <span
+                className={classNames({
+                  ['requiredField']: errors.imageUrl,
+                  ['mMd']: !errors.imageUrl
+                })}
+              >
+                İlan Kapak Görseli
+              </span>
+              {errors.imageUrl && (
+                <span className={styles.errorMessage}>
+                  {errors.imageUrl.message}
+                </span>
+              )}
+            </div>
+            <label
+              htmlFor='imageUrl'
+              className={classNames(styles.imageUploadButton, 'button')}
+            >
+              <Icon name='ImageIcon' size={18} />
+              {imageUploadLabel}
+            </label>
+            <input
+              type='file'
+              id='imageUrl'
+              name='imageUrl'
+              style={{ display: 'none' }}
+              accept='image/png, image/jpeg'
+              onChange={handleFileChange}
+            />
+          </div>
+          <div className={styles.urgentFieldGroup}>
+            <label htmlFor='urgent'>Acil Mi?</label>
+            <input id='urgent' type='checkbox' {...register('urgent')} />
+          </div>
+          <Button
+            type='submit'
+            disabled={isLoading}
+            className={styles.submitButton}
+          >
+            KAYDET
+          </Button>
         </div>
-
-        <div>
-          {errors.imageUrl && <p>{errors.imageUrl.message}</p>}
-          <label htmlFor='imageUrl'>Upload Image</label>
-          <input
-            type='file'
-            id='imageUrl'
-            name='imageUrl'
-            accept='image/png, image/jpeg'
-            onChange={handleFileChange}
-          />
-        </div>
-        <div>
-          <input
-            id='urgent'
-            type='checkbox'
-            checked={getValues('urgent')}
-            {...register('urgent')}
-          />
-          <label htmlFor='urgent'>Urgent</label>
-        </div>
-
-        <button type='submit'>Submit</button>
-        <button type='button' onClick={() => reset()}>
-          Reset
-        </button>
       </form>
       <pre>{JSON.stringify(watch(), null, 2)}</pre>
-    </div>
+    </>
   )
 }
 
