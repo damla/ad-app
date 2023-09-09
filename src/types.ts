@@ -4,7 +4,7 @@ export interface Advertisement {
   favoriteCount: number
   urgent: boolean
   lastUpdated: Date
-  image: string // Base64 encoded
+  imageUrl: string
 }
 
 export enum ToastActionTypes {

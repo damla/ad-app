@@ -6,10 +6,12 @@ export type AddAdvertisementFormData = yup.InferType<
 
 export const ADVERTISEMENT_DEFAULT_VALUES: AddAdvertisementFormData = {
   title: '',
-  image: ''
+  urgent: false,
+  imageUrl: ''
 }
 
 export const ADVERTISEMENT_VALIDATION_SCHEMA = yup.object().shape({
-  title: yup.string().required('Title is required'),
-  image: yup.string().required('Image is required')
+  title: yup.string().required('Lütfen bir başlık giriniz.'),
+  urgent: yup.boolean().required('Lütfen aciliyet durumunu seçiniz.'),
+  imageUrl: yup.string().required('Lütfen bir görsel yükleyiniz.')
 })
