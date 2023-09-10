@@ -1,5 +1,3 @@
-'use client'
-
 import Button from '@/components/general/button/button'
 import { Icon } from '@/components/general/icon/icon'
 import Image from 'next/image'
@@ -11,7 +9,7 @@ const Card: React.FC = () => {
     {
       id: '1',
       title: '2008 BMW 3 Series 328i',
-      urgent: true,
+      isUrgent: true,
       favoriteCount: 61,
       lastUpdated: new Date(),
       imageUrl: '/test.jpg'
@@ -21,7 +19,7 @@ const Card: React.FC = () => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>
-        {advertisements[0].urgent && (
+        {advertisements[0].isUrgent && (
           <span className={styles.badge}>
             <Icon name='FireIcon' size={14} />
             ACİL

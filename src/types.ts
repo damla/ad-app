@@ -2,9 +2,9 @@ export interface Advertisement {
   id: string
   title: string
   favoriteCount: number
-  urgent: boolean
-  lastUpdated: Date
+  isUrgent: boolean
   imageUrl: string
+  lastUpdated: Date
 }
 
 export enum ToastActionTypes {

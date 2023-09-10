@@ -162,8 +162,8 @@ const AddAdvertisementForm: React.FC = () => {
           />
         </div>
         <div className={styles.urgentFieldGroup}>
-          <label htmlFor='urgent'>Acil Mi?</label>
-          <input id='urgent' type='checkbox' {...register('urgent')} />
+          <label htmlFor='isUrgent'>Acil Mi?</label>
+          <input id='isUrgent' type='checkbox' {...register('isUrgent')} />
         </div>
         <Button
           type='submit'
