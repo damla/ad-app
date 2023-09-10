@@ -1,17 +1,35 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
+
 import Button from '@/components/general/button/button'
 import { Icon } from '@/components/general/icon/icon'
 import styles from './styles.module.scss'
-import { useState } from 'react'
 
 const ListingDropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const options = ['Son Eklenen', 'Favori Sayısı']
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <div>
+    <div ref={dropdownRef}>
       <Button onClick={() => setIsOpen(!isOpen)} className={styles.button}>
         <Icon name='SettingsIcon' size={18} />
       </Button>

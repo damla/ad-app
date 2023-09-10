@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   const router = useRouter()
 
   const handleClick = () => {
-    router.push('/add-ad')
+    router.push('/add-advertisement')
   }
 
   return (

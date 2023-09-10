@@ -1,23 +1,27 @@
+'use client'
+
 import Button from '@/components/general/button/button'
 import { Icon } from '@/components/general/icon/icon'
 import Image from 'next/image'
-import { dateTimeFormat } from '@/utils/helper'
+import moment from 'moment'
 import styles from './styles.module.scss'
 
 const Card: React.FC = () => {
-  const ad = {
-    id: '1',
-    title: '2008 BMW 3 Series 328i',
-    urgent: true,
-    favoriteCount: 61,
-    lastUpdated: new Date(),
-    image: '/test.jpg'
-  }
+  const advertisements = [
+    {
+      id: '1',
+      title: '2008 BMW 3 Series 328i',
+      urgent: true,
+      favoriteCount: 61,
+      lastUpdated: new Date(),
+      imageUrl: '/test.jpg'
+    }
+  ]
 
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>
-        {ad.urgent && (
+        {advertisements[0].urgent && (
           <span className={styles.badge}>
             <Icon name='FireIcon' size={14} />
             ACİL
@@ -33,7 +37,7 @@ const Card: React.FC = () => {
         </div>
         <div className={styles.imageWrapper}>
           <Image
-            src={ad.image}
+            src={advertisements[0].imageUrl}
             alt='Advertisement'
             className={styles.image}
             fill
@@ -42,14 +46,17 @@ const Card: React.FC = () => {
           />
         </div>
         <div className={styles.content}>
-          <h5 className={styles.title}>{ad.title}</h5>
+          <h5 className={styles.title}>{advertisements[0].title}</h5>
           <span>
             <Icon name='HeartIcon' />
-            <p>Toplam Favori Sayısı: {ad.favoriteCount}</p>
+            <p>Toplam Favori Sayısı: {advertisements[0].favoriteCount}</p>
           </span>
           <span>
             <Icon name='CalendarIcon' />
-            <time>Son Güncellenme: {dateTimeFormat(ad.lastUpdated)}</time>
+            <time>
+              Son Güncellenme:{' '}
+              {moment(advertisements[0].lastUpdated).format('DD.MM.YYYY HH:mm')}
+            </time>
           </span>
         </div>
       </div>
