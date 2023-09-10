@@ -9,7 +9,7 @@ interface Props {
   data: Advertisement
 }
 
-const Card: React.FC<Props> = ({ data }) => {
+const Ad: React.FC<Props> = ({ data }) => {
   const { isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
   return (
     <div className={styles.cardContainer}>
@@ -56,4 +56,4 @@ const Card: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default Card
+export default Ad

@@ -25,7 +25,7 @@ export default function RootLayout({ children }: Props) {
     <ToastContextProvider>
       <html lang='en'>
         <body className={inter.className}>
-          <Toast/>
+          <Toast />
           <Header />
           <Main>{children}</Main>
           <Footer />
