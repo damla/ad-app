@@ -1,12 +1,13 @@
 import Ad from '@/components/homepage/ad/ad'
 import { Advertisement } from '@prisma/client'
 import { Fragment } from 'react'
-import { getAdvertisements } from '@/libs/advertisement-service'
+import { getAdvertisement } from '@/lib/advertisement-service'
+import { prisma } from '@/lib/prisma'
 import styles from './styles.module.scss'
 
 // TODO: Sorting algorithm will be added.
 const AdList: React.FC = async () => {
-  const data: Advertisement[] = await getAdvertisements()
+  const data: Advertisement[] = await getAdvertisement()
 
   const ads = () => {
     if (data.length === 0 || !data) {

@@ -22,15 +22,15 @@ interface Props {
 
 export default function RootLayout({ children }: Props) {
   return (
-    <ToastContextProvider>
-      <html lang='en'>
-        <body className={inter.className}>
+    <html lang='en'>
+      <body className={inter.className}>
+        <ToastContextProvider>
           <Toast />
           <Header />
           <Main>{children}</Main>
           <Footer />
-        </body>
-      </html>
-    </ToastContextProvider>
+        </ToastContextProvider>
+      </body>
+    </html>
   )
 }
