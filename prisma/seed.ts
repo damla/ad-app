@@ -3,7 +3,9 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.advertisement.upsert({
+  console.log('🌱 Start seeding...')
+
+  const advertisement = await prisma.advertisement.upsert({
     where: { id: 't3st4dv3rt1s3m3nt' },
     update: {},
     create: {
@@ -12,6 +14,8 @@ async function main() {
       imageUrl: '/test.jpg'
     }
   })
+
+  console.log(advertisement, '\n\n✅ Seeding done.')
 }
 
 main()

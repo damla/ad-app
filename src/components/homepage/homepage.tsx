@@ -1,22 +1,32 @@
+import { Advertisement } from '@prisma/client'
 import Breadcrumb from '../general/breadcrumb/breadcrumb'
-import Card from './card/card'
 import CardList from './card-list/card-list'
 import ListingDropdown from './listing-dropdown/listing-dropdown'
+import { url } from '@/utils/env'
 
-const HomePage: React.FC = () => {
+async function getAds() {
+  const res = await fetch(`${url}/api/advertisements`)
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch ads')
+  }
+
+  return res.json()
+}
+
+const HomePage: React.FC = async () => {
+  const ads: Advertisement[] = await getAds()
+
   return (
     <div className='container'>
       <Breadcrumb page='ana sayfa' subtitle='vitrini'>
         <ListingDropdown />
       </Breadcrumb>
-      <CardList>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </CardList>
+      {ads.length === 0 || !ads ? (
+        <p>Henüz ilan bulunmamaktadır.</p>
+      ) : (
+        <CardList data={ads} />
+      )}
     </div>
   )
 }
