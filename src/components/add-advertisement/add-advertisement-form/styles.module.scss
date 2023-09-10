@@ -1,81 +1,102 @@
 @import '/src/styles/globals/variables';
 @import '/src/styles/globals/mixins';
 
-.formGroup {
+.wrapper {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
-  gap: $space-lg;
-  margin-top: $space-5xl;
+  padding: 0 $space-md;
+  gap: $space-xl;
 
   .titleFieldGroup {
     display: inline-flex;
     flex-direction: column;
-    font-weight: $font-weight-medium;
-  }
 
-  .imageFieldGroup {
-    display: inline-flex;
-    font-weight: $font-weight-medium;
-
-    .imageLabel {
+    .titleLabel {
       display: inline-flex;
       flex-direction: column;
-      flex-basis: 50%;
+      position: relative;
+
+      label {
+        margin-bottom: $space-xl;
+      }
     }
-  }
 
-  .titleInput {
-    padding: $space-md $space-lg;
-    border: 1px solid $divider-color;
-    border-radius: $btn-border-radius-base;
-    margin-left: $space-md;
-  }
-
-  .urgentFieldGroup {
-    display: inline-flex;
-    gap: $space-sm;
-    font-weight: $font-weight-medium;
-
-    label {
+    .titleInput {
+      padding: $space-md $space-lg;
+      border: 1px solid $divider-color;
+      border-radius: $btn-border-radius-base;
       margin-left: $space-md;
     }
   }
 
-  .imageUploadButton {
-    height: 48px;
-    display: flex;
-    gap: $space-sm;
-    align-items: center;
-    justify-content: center;
-    padding: $space-md $space-lg;
-    margin-left: $space-md;
-    flex-grow: 1;
-  }
+  .imageFieldGroup {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
 
-  .submitButton {
-    background-color: $submit-button-background-color;
-    color: $submit-button-text-color;
-    place-self: flex-end;
-    font-weight: $font-weight-bold;
+    .imageLabel {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-basis: 80%;
+      margin-right: $space-md;
+    }
 
-    &:disabled {
-      background-color: $submit-button-disabled-background-color;
-      color: $submit-button-text-color;
-      cursor: not-allowed;
-      box-shadow: unset;
-      border: unset;
+    .imageUploadButton {
+      height: unset;
+      display: inline-flex;
+      gap: $space-sm;
+      align-items: center;
+      justify-content: center;
+      padding: $space-sm $space-lg;
+      flex-grow: 1;
+      width: 96px;
+      max-width: 302px;
+
+      .imageUploadLabel {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
 
-  .errorMessage {
-    color: $error-color;
-    font-size: $font-size-xs;
-    margin-bottom: $space-md;
+  .urgentFieldGroup {
+    display: inline-flex;
     margin-left: $space-md;
+    gap: $space-sm;
+  }
+
+  .submitButton {
+    margin-left: $space-md;
+    font-weight: $font-weight-medium;
+    color: $submit-button-text-color;
+    background-color: $submit-button-background-color;
+
+    &:disabled {
+      background-color: $submit-button-disabled-background-color;
+      cursor: not-allowed;
+      box-shadow: unset;
+    }
+  }
+
+  & > div > div > .errorMessage {
+    position: absolute;
+    font-size: $font-size-xxs;
+    font-weight: $font-weight-light;
+    color: $error-color;
+    top: $space-xl;
+    left: $space-md;
   }
 
   @include lg {
-    flex-basis: 40%;
+    flex-basis: 50%;
+
+    .imageFieldGroup {
+      .imageLabel {
+        flex-basis: 50%;
+      }
+    }
   }
 }
