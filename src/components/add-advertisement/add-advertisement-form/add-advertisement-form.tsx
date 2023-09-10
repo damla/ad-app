@@ -37,6 +37,7 @@ const AddAdvertisementForm: React.FC = () => {
     formState,
     setValue,
     setError,
+    clearErrors,
     watch
   } = useForm(formOptions)
   const { errors } = formState
@@ -75,9 +76,10 @@ const AddAdvertisementForm: React.FC = () => {
           }
         )
         const data = await response.json()
-        
+
         setValue('imageUrl', data.secure_url)
         setImageUploadLabel(e.target.files[0].name)
+        clearErrors('imageUrl')
       } catch (error) {
         setError('imageUrl', { message: 'Bir hata oluştu' })
       } finally {
