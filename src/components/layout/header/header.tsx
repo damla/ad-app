@@ -1,6 +1,8 @@
 'use client'
 
 import Button from '@/components/general/button/button'
+import Image from 'next/image'
+import Link from 'next/link'
 import styles from './styles.module.scss'
 // Because of using App dir, we need to use next/navigation instead of next/router
 // See here: https://nextjs.org/docs/messages/next-router-not-mounted
@@ -15,7 +17,9 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <a href='/' className={styles.logo} />
+      <Link href='/' className={styles.logo}>
+        <Image src='/logo.png' alt='Ad Logo' width={40} height={40} priority />
+      </Link>
       <nav>
         <ul>
           <li>
