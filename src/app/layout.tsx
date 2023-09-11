@@ -7,7 +7,7 @@ import Main from '@/components/layout/main/main'
 import type { Metadata } from 'next'
 import { SortOptionProvider } from '@/context/sort-option.context'
 import Toast from '@/components/general/toast/toast'
-import { ToastContextProvider } from '@/context/toast.context'
+import { ToastProvider } from '@/context/toast.context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,14 +27,14 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ToastContextProvider>
+        <ToastProvider>
           <Toast />
           <Header />
           <SortOptionProvider>
             <Main>{children}</Main>
             <Footer />
           </SortOptionProvider>
-        </ToastContextProvider>
+        </ToastProvider>
       </body>
     </html>
   )

@@ -11,7 +11,7 @@ import React, {
 import { SORT_OPTION } from '@/types'
 
 type SortOptionContextValue = {
-  sortOption: SORT_OPTION
+  sortOption: SORT_OPTION | undefined
   setSortOption: (newSortOption: SORT_OPTION) => void
 }
 
@@ -32,7 +32,9 @@ type SortOptionProviderProps = {
 }
 
 export function SortOptionProvider({ children }: SortOptionProviderProps) {
-  const [sortOption, setSortOption] = useState<SORT_OPTION>(SORT_OPTION.DESC) // Default sort option
+  const [sortOption, setSortOption] = useState<SORT_OPTION | undefined>(
+    undefined
+  ) // Default sort option is undefined (no sort)
 
   // Load the sort option from local storage when the component mounts
   useEffect(() => {
@@ -43,7 +45,7 @@ export function SortOptionProvider({ children }: SortOptionProviderProps) {
     }
 
     if (savedSortOption === SORT_OPTION.DESC) {
-      setSortOption(SORT_OPTION.ASC)
+      setSortOption(SORT_OPTION.DESC)
     }
   }, [])
 

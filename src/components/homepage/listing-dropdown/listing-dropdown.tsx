@@ -16,16 +16,16 @@ const ListingDropdown: React.FC = () => {
 
   const handleSortChange = (index: number) => {
     if (index === 0) {
-      setSortOption(SORT_OPTION.DESC)
+      setSortOption(SORT_OPTION.ASC)
       setIsOpen(false)
     }
     if (index === 1) {
-      setSortOption(SORT_OPTION.ASC)
+      setSortOption(SORT_OPTION.DESC)
       setIsOpen(false)
     }
   }
 
-  const options = ['Azalan', 'Artan']
+  const options = ['Artan', 'Azalan']
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
