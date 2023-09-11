@@ -7,7 +7,7 @@ import {
 import { ChangeEvent, useState } from 'react'
 
 import Button from '@/components/general/button/button'
-import { Icon } from '@/components/general/icon/icon'
+import Icon from '@/components/general/icon/icon'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 import { useForm } from 'react-hook-form'

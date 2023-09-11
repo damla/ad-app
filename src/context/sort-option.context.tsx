@@ -19,7 +19,7 @@ const SortOptionContext = createContext<SortOptionContextValue | undefined>(
   undefined
 )
 
-export function useSortOption() {
+export const useSortOption = () => {
   const context = useContext(SortOptionContext)
   if (!context) {
     throw new Error('useSortOption must be used within a SortOptionProvider')
@@ -31,7 +31,7 @@ type SortOptionProviderProps = {
   children: ReactNode
 }
 
-export function SortOptionProvider({ children }: SortOptionProviderProps) {
+export const SortOptionProvider = ({ children }: SortOptionProviderProps) => {
   const [sortOption, setSortOption] = useState<SORT_OPTION | undefined>(
     undefined
   ) // Default sort option is undefined (no sort)

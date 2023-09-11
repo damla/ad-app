@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-export function Icon({ name, size, className }: Props) {
+const Icon: React.FC<Props> = ({ name, size, className }) => {
   const Component = iconNameMap[name]
 
   return (
@@ -22,3 +22,5 @@ export function Icon({ name, size, className }: Props) {
     </span>
   )
 }
+
+export default Icon

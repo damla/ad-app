@@ -1,7 +1,7 @@
 import { Advertisement } from '@prisma/client'
 import DeleteAdButton from './delete-ad-button/delete-ad-button'
 import FavoriteAdButton from './favorite-ad-button/favorite-ad-button'
-import { Icon } from '@/components/general/icon/icon'
+import Icon from '@/components/general/icon/icon'
 import Image from 'next/image'
 import moment from 'moment'
 import styles from './styles.module.scss'

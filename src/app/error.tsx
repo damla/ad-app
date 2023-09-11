@@ -2,7 +2,12 @@
 
 import Button from '@/components/general/button/button'
 
-export default function Error({ reset }: { error: Error; reset: () => void }) {
+interface Props {
+  error: Error
+  reset: () => void
+}
+
+const Error: React.FC<Props> = ({ error, reset }) => {
   return (
     <div className='textCenter'>
       <h2 className='mb3xl'>Hata oluştu!</h2>
@@ -10,3 +15,5 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
     </div>
   )
 }
+
+export default Error

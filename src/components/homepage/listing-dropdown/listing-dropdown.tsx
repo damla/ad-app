@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import Button from '@/components/general/button/button'
-import { Icon } from '@/components/general/icon/icon'
+import Icon from '@/components/general/icon/icon'
 import { SORT_OPTION } from '@/types'
 import styles from './styles.module.scss'
 import { useSortOption } from '@/context/sort-option.context'
