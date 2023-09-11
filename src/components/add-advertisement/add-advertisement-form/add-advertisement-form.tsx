@@ -88,9 +88,21 @@ const AddAdvertisementForm: React.FC = () => {
     }
   }
 
-  const onSubmit = () => {
-    const advertisementData = watch()
-    // TODO: add advertisement to the database
+  const onSubmit = async () => {
+    const response = await fetch('/api/advertisements', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...watch() })
+    })
+
+    if (response.ok) {
+      router.refresh()
+      router.push('/')
+    } else {
+      const error = await response.text()
+      showToast(error, 'error')
+      reset()
+    }
 
     reset()
     setImageUploadLabel('Yükle')
