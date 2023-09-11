@@ -5,6 +5,7 @@ import Header from '@/components/layout/header/header'
 import { Inter } from 'next/font/google'
 import Main from '@/components/layout/main/main'
 import type { Metadata } from 'next'
+import { SortOptionProvider } from '@/context/sort-option.context'
 import Toast from '@/components/general/toast/toast'
 import { ToastContextProvider } from '@/context/toast.context'
 
@@ -29,8 +30,10 @@ export default function RootLayout({ children }: Props) {
         <ToastContextProvider>
           <Toast />
           <Header />
-          <Main>{children}</Main>
-          <Footer />
+          <SortOptionProvider>
+            <Main>{children}</Main>
+            <Footer />
+          </SortOptionProvider>
         </ToastContextProvider>
       </body>
     </html>

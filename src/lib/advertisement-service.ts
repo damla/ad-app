@@ -3,8 +3,11 @@ import prisma from './prisma'
 
 export const getAdvertisements = async () => {
   try {
-    const advertisements: Advertisement[] =
-      await prisma.advertisement.findMany()
+    const advertisements: Advertisement[] = await prisma.advertisement.findMany(
+      {
+        orderBy: [{ lastUpdated: 'desc' }]
+      }
+    )
 
     return advertisements
   } catch (error: any) {
