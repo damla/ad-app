@@ -4,9 +4,6 @@ import { Fragment } from 'react'
 import prisma from '@/lib/prisma'
 import styles from './styles.module.scss'
 
-export const preferredRegion = 'home'
-export const dynamic = 'force-dynamic'
-
 // TODO: Sorting algorithm will be added.
 const AdList: React.FC = async () => {
   const advertisements: Advertisement[] = await prisma.advertisement.findMany()

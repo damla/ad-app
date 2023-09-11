@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 interface Props {
   children: React.ReactNode
 }
+export const preferredRegion = 'home'
+export const dynamic = 'force-dynamic'
 
 export default function RootLayout({ children }: Props) {
   return (
