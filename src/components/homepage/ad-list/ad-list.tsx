@@ -1,32 +1,21 @@
 import Ad from '@/components/homepage/ad/ad'
 import { Advertisement } from '@prisma/client'
 import { Fragment } from 'react'
+import prisma from '@/lib/prisma'
 import styles from './styles.module.scss'
-import { url } from '@/utils/env'
 
-const getAdvertisement = async () => {
-  try {
-    const res = await fetch(`${url}/api/advertisements`, {
-      cache: 'no-cache'
-    })
-    if (!res.ok) {
-      throw new Error('Failed to fetch advertisements.')
-    }
-    return res.json()
-  } catch (error) {
-    console.log('error loading advertisements: ', error)
-  }
-}
+export const preferredRegion = 'home'
+export const dynamic = 'force-dynamic'
 
 // TODO: Sorting algorithm will be added.
 const AdList: React.FC = async () => {
-  const data: Advertisement[] = await getAdvertisement()
+  const advertisements: Advertisement[] = await prisma.advertisement.findMany()
 
   const ads = () => {
-    if (data.length === 0 || !data) {
+    if (!advertisements) {
       return <p>Henüz ilan bulunmamaktadır.</p>
     } else {
-      return data.map((ad, index) => (
+      return advertisements.map((ad, index) => (
         <Fragment key={`ad-card-${index}`}>
           <Ad data={ad} />
         </Fragment>

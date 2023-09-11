@@ -25,7 +25,6 @@ specifiers:
 dependencies:
   '@hookform/resolvers': 3.3.1_react-hook-form@7.46.1
   '@prisma/client': 5.2.0_prisma@5.2.0
-  '@types/node': 20.5.9
   '@types/react': 18.2.21
   '@types/react-dom': 18.2.7
   classnames: 2.3.2
@@ -42,6 +41,7 @@ dependencies:
   yup: 1.2.0
 
 devDependencies:
+  '@types/node': 20.5.9
   prisma: 5.2.0
   sass: 1.66.1
   ts-node: 10.9.1_p35ng363u6hdnkpdl7uptulkfi
@@ -337,6 +337,7 @@ packages:
 
   /@types/node/20.5.9:
     resolution: {integrity: sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==}
+    dev: true
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
