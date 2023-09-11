@@ -2,10 +2,11 @@ import Ad from '@/components/homepage/ad/ad'
 import { Advertisement } from '@prisma/client'
 import { Fragment } from 'react'
 import styles from './styles.module.scss'
+import { url } from '@/utils/env'
 
 const getAdvertisement = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/advertisements', {
+    const res = await fetch(`${url}/api/advertisements`, {
       cache: 'no-cache'
     })
     if (!res.ok) {
