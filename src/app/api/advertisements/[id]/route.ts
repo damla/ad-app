@@ -38,7 +38,8 @@ export async function PATCH(
         title: req.title || undefined,
         favoriteCount: req.favoriteCount || undefined,
         isUrgent: req.isUrgent || undefined,
-        imageUrl: req.imageUrl || undefined
+        imageUrl: req.imageUrl || undefined,
+        lastUpdated: new Date()
       }
     })
 
