@@ -5,10 +5,10 @@ async function main() {
   console.log('🌱 Start seeding...')
 
   const advertisement = await prisma.advertisement.upsert({
-    where: { id: 't3st4dv3rt1s3m3nt' },
+    where: { id: 'clmet0gw2000008mi9vo446pt' },
     update: {},
     create: {
-      id: 't3st4dv3rt1s3m3nt',
+      id: 'clmet0gw2000008mi9vo446pt',
       title: '2023 BMW 4 Series 420i',
       imageUrl: '/test.jpg'
     }

@@ -1,17 +1,16 @@
 import AdList from './ad-list/ad-list'
-import Breadcrumb from '../general/breadcrumb/breadcrumb'
+import Breadcrumb from '@/components/general/breadcrumb/breadcrumb'
 import ListingDropdown from './listing-dropdown/listing-dropdown'
+import { getAdvertisements } from '@/lib/advertisement-service'
 
-export const preferredRegion = 'home'
-export const dynamic = 'force-dynamic'
-
-const HomePage: React.FC = () => {
+const HomePage: React.FC = async () => {
+  const ads = await getAdvertisements()
   return (
     <div className='container'>
       <Breadcrumb page='ana sayfa' subtitle='vitrini'>
         <ListingDropdown />
       </Breadcrumb>
-      <AdList />
+      <AdList data={ads} />
     </div>
   )
 }
