@@ -4,13 +4,28 @@ import { useEffect, useRef, useState } from 'react'
 
 import Button from '@/components/general/button/button'
 import { Icon } from '@/components/general/icon/icon'
+import { SORT_OPTION } from '@/types'
 import styles from './styles.module.scss'
+import { useSortOption } from '@/context/sort-option.context'
 
 const ListingDropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const options = ['Son Eklenen', 'Favori Sayısı']
+  const { setSortOption } = useSortOption()
+
+  const handleSortChange = (index: number) => {
+    if (index === 0) {
+      setSortOption(SORT_OPTION.ASC)
+      setIsOpen(false)
+    }
+    if (index === 1) {
+      setSortOption(SORT_OPTION.DESC)
+      setIsOpen(false)
+    }
+  }
+
+  const options = ['Artan', 'Azalan']
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -39,11 +54,9 @@ const ListingDropdown: React.FC = () => {
             <Button
               key={`dropdown-list-item-${index}`}
               className={styles.listItem}
-              onClick={() => {
-                setIsOpen(false)
-              }}
+              onClick={() => handleSortChange(index)}
             >
-              Sırala ({option})
+              Favori Sayısı ({option})
             </Button>
           ))}
         </ul>

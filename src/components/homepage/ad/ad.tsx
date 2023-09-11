@@ -1,43 +1,33 @@
-'use client'
-
-import Button from '@/components/general/button/button'
+import { Advertisement } from '@prisma/client'
+import DeleteAdButton from './delete-ad-button/delete-ad-button'
+import FavoriteAdButton from './favorite-ad-button/favorite-ad-button'
 import { Icon } from '@/components/general/icon/icon'
 import Image from 'next/image'
 import moment from 'moment'
 import styles from './styles.module.scss'
 
-const Card: React.FC = () => {
-  const advertisements = [
-    {
-      id: '1',
-      title: '2008 BMW 3 Series 328i',
-      urgent: true,
-      favoriteCount: 61,
-      lastUpdated: new Date(),
-      imageUrl: '/test.jpg'
-    }
-  ]
+interface Props {
+  data: Advertisement
+}
 
+const Ad: React.FC<Props> = ({ data }) => {
+  const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>
-        {advertisements[0].urgent && (
+        {isUrgent && (
           <span className={styles.badge}>
             <Icon name='FireIcon' size={14} />
             ACİL
           </span>
         )}
         <div className={styles.buttonContainer}>
-          <Button className={styles.favoriteButton}>
-            <Icon name='HeartIcon' size={20} />
-          </Button>
-          <Button className={styles.trashButton}>
-            <Icon name='TrashIcon' size={20} />
-          </Button>
+          <FavoriteAdButton id={id} favoriteCount={favoriteCount} />
+          <DeleteAdButton id={id} />
         </div>
         <div className={styles.imageWrapper}>
           <Image
-            src={advertisements[0].imageUrl}
+            src={imageUrl}
             alt='Advertisement'
             className={styles.image}
             fill
@@ -46,16 +36,15 @@ const Card: React.FC = () => {
           />
         </div>
         <div className={styles.content}>
-          <h5 className={styles.title}>{advertisements[0].title}</h5>
+          <h5 className={styles.title}>{title}</h5>
           <span>
             <Icon name='HeartIcon' />
-            <p>Toplam Favori Sayısı: {advertisements[0].favoriteCount}</p>
+            <p>Toplam Favori Sayısı: {favoriteCount}</p>
           </span>
           <span>
             <Icon name='CalendarIcon' />
             <time>
-              Son Güncellenme:{' '}
-              {moment(advertisements[0].lastUpdated).format('DD.MM.YYYY HH:mm')}
+              Son Güncellenme: {moment(lastUpdated).format('DD.MM.YYYY HH:mm')}
             </time>
           </span>
         </div>
@@ -64,4 +53,4 @@ const Card: React.FC = () => {
   )
 }
 
-export default Card
+export default Ad

@@ -1,22 +1,17 @@
-import Breadcrumb from '../general/breadcrumb/breadcrumb'
-import Card from './card/card'
-import CardList from './card-list/card-list'
+import AdList from './ad-list/ad-list'
+import Breadcrumb from '@/components/general/breadcrumb/breadcrumb'
 import ListingDropdown from './listing-dropdown/listing-dropdown'
+import { getAdvertisements } from '@/lib/advertisement-service'
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = async () => {
+  const data = await getAdvertisements()
+
   return (
     <div className='container'>
       <Breadcrumb page='ana sayfa' subtitle='vitrini'>
         <ListingDropdown />
       </Breadcrumb>
-      <CardList>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </CardList>
+      <AdList data={data} />
     </div>
   )
 }

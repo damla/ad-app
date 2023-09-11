@@ -5,8 +5,9 @@ import Header from '@/components/layout/header/header'
 import { Inter } from 'next/font/google'
 import Main from '@/components/layout/main/main'
 import type { Metadata } from 'next'
+import { SortOptionProvider } from '@/context/sort-option.context'
 import Toast from '@/components/general/toast/toast'
-import { ToastContextProvider } from '@/context/toast.context'
+import { ToastProvider } from '@/context/toast.context'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,17 +21,21 @@ interface Props {
   children: React.ReactNode
 }
 
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({ children }: Props) {
   return (
-    <ToastContextProvider>
-      <html lang='en'>
-        <body className={inter.className}>
-          <Toast/>
+    <html lang='en'>
+      <body className={inter.className}>
+        <ToastProvider>
+          <Toast />
           <Header />
-          <Main>{children}</Main>
-          <Footer />
-        </body>
-      </html>
-    </ToastContextProvider>
+          <SortOptionProvider>
+            <Main>{children}</Main>
+            <Footer />
+          </SortOptionProvider>
+        </ToastProvider>
+      </body>
+    </html>
   )
 }

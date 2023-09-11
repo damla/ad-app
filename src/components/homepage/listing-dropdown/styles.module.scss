@@ -20,6 +20,7 @@
     border-radius: $dropdown-radius;
     border: unset;
     padding: 0 $btn-padding-horizontal-base;
+    text-align: left;
 
     &:hover {
       background-color: $dropdown-item-background-hover;
