@@ -52,24 +52,6 @@
       }
     }
 
-    .trashButton {
-      border-radius: 100%;
-      display: none;
-      align-items: center;
-      padding: 0 $btn-padding-horizontal-xs;
-      height: $action-button-size;
-
-      &:hover {
-        svg {
-          stroke: $delete-button-hover-stroke-color;
-        }
-      }
-
-      svg {
-        stroke: $delete-button-stroke-color;
-      }
-    }
-
     svg {
       stroke-width: 1;
     }
@@ -106,7 +88,7 @@
   }
 
   &:hover {
-    .trashButton {
+    button:last-child {
       display: inline-flex;
     }
   }

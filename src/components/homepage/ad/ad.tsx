@@ -1,5 +1,6 @@
 import { Advertisement } from '@prisma/client'
 import Button from '@/components/general/button/button'
+import DeleteAdButton from './delete-ad-button/delete-ad-button'
 import { Icon } from '@/components/general/icon/icon'
 import Image from 'next/image'
 import moment from 'moment'
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Ad: React.FC<Props> = ({ data }) => {
-  const { isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
+  const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>
@@ -24,9 +25,7 @@ const Ad: React.FC<Props> = ({ data }) => {
           <Button className={styles.favoriteButton}>
             <Icon name='HeartIcon' size={20} />
           </Button>
-          <Button className={styles.trashButton}>
-            <Icon name='TrashIcon' size={20} />
-          </Button>
+          <DeleteAdButton id={id} />
         </div>
         <div className={styles.imageWrapper}>
           <Image
