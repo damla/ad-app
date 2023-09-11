@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import moment from 'moment-timezone'
 import prisma from '@/lib/prisma'
 
 export async function GET(
@@ -31,6 +32,7 @@ export async function PATCH(
   try {
     const id = params.id
     let req = await request.json()
+    const date = moment(new Date()).tz('Europe/Istanbul')
 
     const updated_ad = await prisma.advertisement.update({
       where: { id },
@@ -39,7 +41,7 @@ export async function PATCH(
         favoriteCount: req.favoriteCount || undefined,
         isUrgent: req.isUrgent || undefined,
         imageUrl: req.imageUrl || undefined,
-        lastUpdated: new Date()
+        lastUpdated: date.toDate()
       }
     })
 
