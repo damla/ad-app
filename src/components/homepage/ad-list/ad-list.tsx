@@ -11,7 +11,6 @@ interface Props {
   data: Advertisement[]
 }
 
-// TODO: Sorting algorithm will be added.
 const AdList: React.FC<Props> = ({ data }) => {
   const { sortOption } = useSortOption()
   let sortedAds = data
