@@ -1,6 +1,6 @@
 import { Advertisement } from '@prisma/client'
-import Button from '@/components/general/button/button'
 import DeleteAdButton from './delete-ad-button/delete-ad-button'
+import FavoriteAdButton from './favorite-ad-button/favorite-ad-button'
 import { Icon } from '@/components/general/icon/icon'
 import Image from 'next/image'
 import moment from 'moment'
@@ -22,9 +22,7 @@ const Ad: React.FC<Props> = ({ data }) => {
           </span>
         )}
         <div className={styles.buttonContainer}>
-          <Button className={styles.favoriteButton}>
-            <Icon name='HeartIcon' size={20} />
-          </Button>
+          <FavoriteAdButton id={id} favoriteCount={favoriteCount} />
           <DeleteAdButton id={id} />
         </div>
         <div className={styles.imageWrapper}>
