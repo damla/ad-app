@@ -8,9 +8,10 @@ import styles from './styles.module.scss'
 
 interface Props {
   data: Advertisement
+  imgPriority: boolean
 }
 
-const Ad: React.FC<Props> = ({ data }) => {
+const Ad: React.FC<Props> = ({ data, imgPriority }) => {
   const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
   return (
     <div className={styles.cardContainer}>
@@ -31,7 +32,7 @@ const Ad: React.FC<Props> = ({ data }) => {
             alt='Advertisement'
             className={styles.image}
             fill
-            priority
+            priority={imgPriority}
             sizes='500px'
           />
         </div>
