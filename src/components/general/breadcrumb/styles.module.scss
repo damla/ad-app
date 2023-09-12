@@ -15,6 +15,16 @@
     gap: $space-sm;
   }
 
+  .titleSkeleton {
+    width: 170px;
+    height: 30px;
+  }
+
+  .buttonSkeleton {
+    width: 28px;
+    height: 30px;
+  }
+
   .divider {
     width: 100%;
     border: 0.5px solid $divider-color;

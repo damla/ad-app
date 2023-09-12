@@ -1,17 +1,21 @@
 import { Advertisement } from '@prisma/client'
 import DeleteAdButton from './delete-ad-button/delete-ad-button'
 import FavoriteAdButton from './favorite-ad-button/favorite-ad-button'
-import { Icon } from '@/components/general/icon/icon'
+import Icon from '@/components/general/icon/icon'
 import Image from 'next/image'
-import moment from 'moment'
+import { Skeleton } from '@/components/general/skeleton/skeleton'
 import styles from './styles.module.scss'
+import useFormattedDate from '@/hooks/use-formatted-date'
 
 interface Props {
   data: Advertisement
+  imgPriority?: boolean
 }
 
-const Ad: React.FC<Props> = ({ data }) => {
+export const Ad: React.FC<Props> = ({ data, imgPriority = false }) => {
   const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
+
+  const date = useFormattedDate(lastUpdated)
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>
@@ -28,10 +32,10 @@ const Ad: React.FC<Props> = ({ data }) => {
         <div className={styles.imageWrapper}>
           <Image
             src={imageUrl}
-            alt='Advertisement'
+            alt='advertisement image'
             className={styles.image}
             fill
-            priority
+            priority={imgPriority}
             sizes='500px'
           />
         </div>
@@ -43,9 +47,7 @@ const Ad: React.FC<Props> = ({ data }) => {
           </span>
           <span>
             <Icon name='CalendarIcon' />
-            <time>
-              Son Güncellenme: {moment(lastUpdated).format('DD.MM.YYYY HH:mm')}
-            </time>
+            <time>Son Güncellenme: {date}</time>
           </span>
         </div>
       </div>
@@ -53,4 +55,23 @@ const Ad: React.FC<Props> = ({ data }) => {
   )
 }
 
-export default Ad
+export const AdSkeleton: React.FC = () => {
+  return (
+    <div className={styles.cardContainer}>
+      <div className={styles.wrapper}>
+        <Skeleton className={styles.imageSkeleton} />
+        <div className={styles.content}>
+          <Skeleton className={styles.titleSkeleton} />
+          <span>
+            <Icon name='HeartIcon' />
+            <Skeleton className={styles.textSkeleton} />
+          </span>
+          <span>
+            <Icon name='CalendarIcon' />
+            <Skeleton className={styles.textSkeleton} />
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}

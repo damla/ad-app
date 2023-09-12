@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-async function main() {
+const main = async () => {
   console.log('🌱 Start seeding...')
 
   const advertisement = await prisma.advertisement.upsert({

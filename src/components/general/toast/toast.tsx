@@ -1,23 +1,34 @@
 'use client'
 
+import { useContext, useEffect } from 'react'
+
 import { ToastContext } from '@/context/toast.context'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
-import { useContext } from 'react'
 
 const Toast: React.FC = () => {
-  const { state } = useContext(ToastContext)
+  const {
+    state: { display, type, message }
+  } = useContext(ToastContext)
 
-  if (!state.display) return null
+  useEffect(() => {
+    if (display) {
+      const header = document.querySelector('#header')
+      if (header) {
+        setTimeout(() => header.scrollIntoView({ behavior: 'smooth' }), 200)
+      }
+    }
+  }, [display])
 
   return (
     <div
       className={classNames(styles.wrapper, {
-        [styles.success]: state.type === 'success',
-        [styles.error]: state.type === 'error'
+        [styles.show]: display,
+        [styles.success]: type === 'success',
+        [styles.error]: type === 'error'
       })}
     >
-      {state.message}
+      {message}
     </div>
   )
 }

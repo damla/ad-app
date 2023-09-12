@@ -5,22 +5,21 @@ import {
   ADVERTISEMENT_VALIDATION_SCHEMA
 } from './validation'
 import { ChangeEvent, useState } from 'react'
+import { checkFile, uploadToCloudinary } from '@/utils/helpers'
 
-import Button from '@/components/general/button/button'
-import { Icon } from '@/components/general/icon/icon'
+import { Button } from '@/components/general/button/button'
+import Icon from '@/components/general/icon/icon'
+import { Skeleton } from '@/components/general/skeleton/skeleton'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 import { useForm } from 'react-hook-form'
+// Because of using App dir, we need to use next/navigation instead of next/router
+// See: https://nextjs.org/docs/messages/next-router-not-mounted
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-const cloudinaryInfo = {
-  CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUD_NAME || '',
-  UPLOAD_PRESET: process.env.NEXT_PUBLIC_UPLOAD_PRESET || ''
-}
-
-const AddAdvertisementForm: React.FC = () => {
+export const AddAdvertisementForm: React.FC = () => {
   const [imageUploadLabel, setImageUploadLabel] = useState<string>('Yükle')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const formOptions = {
@@ -44,47 +43,25 @@ const AddAdvertisementForm: React.FC = () => {
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true)
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
 
-      // Check if file size exceeds 5MB
-      if (file.size > 5 * 1024 * 1024) {
-        setError('imageUrl', { message: "Görsel boyutu 5MB'dan büyük olamaz" })
-        setIsLoading(false)
-        return
-      }
+    const file = e.target?.files?.[0]
+    const fileCheckResult = checkFile(file)
 
-      // Check for accepted MIME types
-      if (file.type !== 'image/png' && file.type !== 'image/jpeg') {
-        setError('imageUrl', {
-          message: 'Lütfen png veya jpeg formatında görsel yükleyiniz'
-        })
-        setIsLoading(false)
-        return
-      }
+    if (!fileCheckResult.file) {
+      setError('imageUrl', { message: fileCheckResult.error })
+      setIsLoading(false)
+      return
+    }
 
-      const formData = new FormData()
-      formData.append('file', e.target.files[0])
-      formData.append('upload_preset', cloudinaryInfo.UPLOAD_PRESET)
-
-      try {
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudinaryInfo.CLOUD_NAME}/upload/`,
-          {
-            method: 'POST',
-            body: formData
-          }
-        )
-        const data = await response.json()
-
-        setValue('imageUrl', data.secure_url)
-        setImageUploadLabel(e.target.files[0].name)
-        clearErrors('imageUrl')
-      } catch (error) {
-        setError('imageUrl', { message: 'Bir hata oluştu' })
-      } finally {
-        setIsLoading(false)
-      }
+    try {
+      const data = await uploadToCloudinary(fileCheckResult.file)
+      setValue('imageUrl', data.secure_url)
+      setImageUploadLabel(fileCheckResult.file.name)
+      clearErrors('imageUrl')
+    } catch (error) {
+      setError('imageUrl', { message: 'Bir hata oluştu' })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -96,20 +73,17 @@ const AddAdvertisementForm: React.FC = () => {
     })
 
     if (response.ok) {
-      router.refresh()
-      router.push('/')
+      showToast(
+        'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
+        'success'
+      )
     } else {
       const error = await response.text()
       showToast(error, 'error')
-      reset()
     }
-
     reset()
     setImageUploadLabel('Yükle')
-    showToast(
-      'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
-      'success'
-    )
+    router.refresh()
     router.push('/')
   }
 
@@ -159,10 +133,20 @@ const AddAdvertisementForm: React.FC = () => {
           </div>
           <label
             htmlFor='imageUrl'
-            className={classNames(styles.imageUploadButton, 'button')}
+            className={classNames(styles.imageUploadButton, 'button', {
+              [styles.disabled]: isLoading
+            })}
           >
-            <Icon name='ImageIcon' size={18} />
-            <span className={styles.imageUploadLabel}>{imageUploadLabel}</span>
+            {isLoading ? (
+              <Icon name='Spinner' size={24} />
+            ) : (
+              <>
+                <Icon name='ImageIcon' size={18} />
+                <span className={styles.imageUploadLabel}>
+                  {imageUploadLabel}
+                </span>
+              </>
+            )}
           </label>
           <input
             type='file'
@@ -171,6 +155,7 @@ const AddAdvertisementForm: React.FC = () => {
             style={{ display: 'none' }}
             accept='image/png, image/jpeg'
             onChange={handleFileChange}
+            disabled={isLoading}
           />
         </div>
         <div className={styles.urgentFieldGroup}>
@@ -182,11 +167,31 @@ const AddAdvertisementForm: React.FC = () => {
           disabled={isLoading}
           className={styles.submitButton}
         >
-          KAYDET
+          {isLoading ? <Icon name='Spinner' size={16} /> : 'KAYDET'}
         </Button>
       </div>
     </form>
   )
 }
 
-export default AddAdvertisementForm
+export const AddAdvertisementFormSkeleton: React.FC = () => {
+  return (
+    <div className='centerAlignedItems ptXl'>
+      <div className={classNames(styles.wrapper, 'pl2xl')}>
+        <div className={styles.titleFieldGroupSkeleton}>
+          <Skeleton />
+          <Skeleton />
+        </div>
+        <div className={styles.imageFieldGroupSkeleton}>
+          <Skeleton />
+          <Skeleton />
+        </div>
+        <div className={styles.urgentFieldGroupSkeleton}>
+          <Skeleton />
+          <Skeleton />
+        </div>
+        <Skeleton className={styles.submitButtonSkeleton} />
+      </div>
+    </div>
+  )
+}

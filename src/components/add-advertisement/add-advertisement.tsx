@@ -1,6 +1,5 @@
-import AddAdvertisementForm from './add-advertisement-form/add-advertisement-form'
-import Breadcrumb from '@/components/general/breadcrumb/breadcrumb'
-import styles from './styles.module.scss'
+import { AddAdvertisementForm } from './add-advertisement-form/add-advertisement-form'
+import { Breadcrumb } from '@/components/general/breadcrumb/breadcrumb'
 
 const AddAdvertisement: React.FC = () => {
   return (

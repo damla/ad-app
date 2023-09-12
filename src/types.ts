@@ -4,6 +4,6 @@ export enum ToastActionTypes {
 }
 
 export enum SORT_OPTION {
-  ASC = 'asc',
-  DESC = 'desc'
+  ASC = 'artan',
+  DESC = 'azalan'
 }

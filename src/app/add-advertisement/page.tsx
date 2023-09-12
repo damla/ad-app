@@ -1,5 +1,8 @@
 import AddAdvertisement from '@/components/add-advertisement/add-advertisement'
+import { NextPage } from 'next'
 
-export default function AddAdvertisementPage() {
+const AddAdvertisementPage: NextPage = () => {
   return <AddAdvertisement />
 }
+
+export default AddAdvertisementPage

@@ -1,3 +1,4 @@
+import { Skeleton } from '@/components/general/skeleton/skeleton'
 import styles from './styles.module.scss'
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
+export const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -19,4 +20,24 @@ const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
   )
 }
 
-export default Breadcrumb
+interface BreadcrumbSkeletonProps {
+  children?: React.ReactNode
+}
+
+export const BreadcrumbSkeleton: React.FC<BreadcrumbSkeletonProps> = ({
+  children
+}) => {
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.titleSkeleton}>
+        <Skeleton className={styles.titleSkeleton} />
+      </div>
+      {children}
+      <div className={styles.divider} />
+    </div>
+  )
+}
+
+export const ButtonSkeleton: React.FC = () => {
+  return <Skeleton className={styles.buttonSkeleton} />
+}
