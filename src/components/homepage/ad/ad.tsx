@@ -4,7 +4,6 @@ import FavoriteAdButton from './favorite-ad-button/favorite-ad-button'
 import Icon from '@/components/general/icon/icon'
 import Image from 'next/image'
 import { Skeleton } from '@/components/general/skeleton/skeleton'
-import moment from 'moment'
 import styles from './styles.module.scss'
 import useFormattedDate from '@/hooks/use-formatted-date'
 
