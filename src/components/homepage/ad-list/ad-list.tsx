@@ -3,32 +3,27 @@
 import Ad from '@/components/homepage/ad/ad'
 import { Advertisement } from '@prisma/client'
 import { Fragment } from 'react'
-import { sortAds } from '@/utils/helpers'
 import styles from './styles.module.scss'
-import { useSortOption } from '@/context/sort-option.context'
+import { useSortOption } from '@/hooks/use-sort-option'
 
 interface Props {
-  data: Advertisement[]
+  ads: Advertisement[]
 }
 
-const AdList: React.FC<Props> = ({ data }) => {
-  const { sortOption } = useSortOption()
-  let sortedAds = data
+const AdList: React.FC<Props> = ({ ads }) => {
+  const { sortedAds } = useSortOption()
+  const data = sortedAds(ads)
 
-  if (sortOption) {
-    sortedAds = sortAds(data, sortOption)
-  }
-
-  const ads = () => {
+  const adList = () => {
     if (data.length === 0 || !data) {
       return <p>Henüz ilan bulunmamaktadır.</p>
     }
-    return sortedAds.map((ad, index) => (
+    return data.map((ad, index) => (
       <Fragment key={`ad-card-${index}`}>
         <Ad data={ad} />
       </Fragment>
     ))
   }
-  return <div className={styles.wrapper}>{ads()}</div>
+  return <div className={styles.wrapper}>{adList()}</div>
 }
 export default AdList

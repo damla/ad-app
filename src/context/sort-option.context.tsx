@@ -3,29 +3,24 @@
 import React, {
   ReactNode,
   createContext,
-  useContext,
+  useCallback,
   useEffect,
+  useMemo,
   useState
 } from 'react'
 
+import { Advertisement } from '@prisma/client'
 import { SORT_OPTION } from '@/types'
+import { sortAds } from '@/utils/helpers'
 
 type SortOptionContextValue = {
-  sortOption: SORT_OPTION | undefined
+  sortedAds: (ads: Advertisement[]) => Advertisement[]
   setSortOption: (newSortOption: SORT_OPTION) => void
 }
 
-const SortOptionContext = createContext<SortOptionContextValue | undefined>(
-  undefined
-)
-
-export const useSortOption = () => {
-  const context = useContext(SortOptionContext)
-  if (!context) {
-    throw new Error('useSortOption must be used within a SortOptionProvider')
-  }
-  return context
-}
+export const SortOptionContext = createContext<
+  SortOptionContextValue | undefined
+>(undefined)
 
 type SortOptionProviderProps = {
   children: ReactNode
@@ -34,31 +29,35 @@ type SortOptionProviderProps = {
 export const SortOptionProvider = ({ children }: SortOptionProviderProps) => {
   const [sortOption, setSortOption] = useState<SORT_OPTION | undefined>(
     undefined
-  ) // Default sort option is undefined (no sort)
+  )
 
-  // Load the sort option from local storage when the component mounts
   useEffect(() => {
-    const savedSortOption = localStorage.getItem('sortOption')
+    const savedSortOption = localStorage.getItem('sortOption');
 
-    if (savedSortOption === SORT_OPTION.ASC) {
-      setSortOption(SORT_OPTION.ASC)
-    }
-
-    if (savedSortOption === SORT_OPTION.DESC) {
-      setSortOption(SORT_OPTION.DESC)
+    if (Object.values(SORT_OPTION).includes(savedSortOption as SORT_OPTION)) {
+      setSortOption(savedSortOption as SORT_OPTION);
     }
   }, [])
 
-  // Function to set the sort option and save it to local storage
-  const setAndSaveSortOption = (newSortOption: SORT_OPTION) => {
+  const setAndSaveSortOption = useCallback((newSortOption: SORT_OPTION) => {
     localStorage.setItem('sortOption', newSortOption)
     setSortOption(newSortOption)
-  }
+  }, [])
 
-  const contextValue: SortOptionContextValue = {
-    sortOption,
-    setSortOption: setAndSaveSortOption
-  }
+  const sortedAdsFunction = useCallback(
+    (ads: Advertisement[]): Advertisement[] => {
+      return !sortOption ? ads : sortAds(ads, sortOption)
+    },
+    [sortOption]
+  )
+
+  const contextValue = useMemo(
+    () => ({
+      sortedAds: sortedAdsFunction,
+      setSortOption: setAndSaveSortOption
+    }),
+    [sortedAdsFunction, setAndSaveSortOption]
+  )
 
   return (
     <SortOptionContext.Provider value={contextValue}>

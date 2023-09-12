@@ -17,3 +17,9 @@ export const sortAds = (ads: Advertisement[], sortOption: SORT_OPTION) => {
     return dateB.getTime() - dateA.getTime() // Most recent date first
   })
 }
+
+export const capitalizeFirstLetter = (string: string) => {
+  return (
+    string.charAt(0).toLocaleUpperCase() + string.slice(1).toLocaleLowerCase()
+  )
+}

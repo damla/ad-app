@@ -11,7 +11,7 @@ const HomePage: React.FC = async () => {
       <Breadcrumb page='ana sayfa' subtitle='vitrini'>
         <ListingDropdown />
       </Breadcrumb>
-      <AdList data={data} />
+      <AdList ads={data} />
     </div>
   )
 }
