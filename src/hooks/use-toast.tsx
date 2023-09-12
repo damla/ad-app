@@ -14,7 +14,7 @@ export const useToast = () => {
     })
     setTimeout(() => {
       dispatch({ type: ToastActionTypes.HIDE_TOAST })
-    }, 5000)
+    }, 3000)
   }
 
   return {

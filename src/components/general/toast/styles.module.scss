@@ -7,7 +7,8 @@
   top: calc($navbar-height + $space-3xl);
   transform: translateX(-50%);
   padding: $space-sm $space-xl;
-  border-radius: $btn-border-radius-base;
+  border-radius: $toast-radius;
+  box-shadow: $toast-shadow;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
