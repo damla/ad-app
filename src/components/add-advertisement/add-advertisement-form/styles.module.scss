@@ -35,6 +35,14 @@
     justify-content: space-between;
     align-items: flex-start;
 
+    .disabled {
+      border: 1px solid $background-color-light;
+      cursor: not-allowed;
+      padding: $space-md $space-lg;
+      background-color: $background-color-light;
+      box-shadow: unset;
+    }
+
     .imageLabel {
       display: flex;
       flex-direction: column;
@@ -76,9 +84,14 @@
     background-color: $submit-button-background-color;
 
     &:disabled {
+      border: $submit-button-disabled-background-color;
       background-color: $submit-button-disabled-background-color;
       cursor: not-allowed;
       box-shadow: unset;
+    }
+
+    svg {
+      stroke: $text-color-white;
     }
   }
 

@@ -133,10 +133,20 @@ export const AddAdvertisementForm: React.FC = () => {
           </div>
           <label
             htmlFor='imageUrl'
-            className={classNames(styles.imageUploadButton, 'button')}
+            className={classNames(styles.imageUploadButton, 'button', {
+              [styles.disabled]: isLoading
+            })}
           >
-            <Icon name='ImageIcon' size={18} />
-            <span className={styles.imageUploadLabel}>{imageUploadLabel}</span>
+            {isLoading ? (
+              <Icon name='Spinner' size={24} />
+            ) : (
+              <>
+                <Icon name='ImageIcon' size={18} />
+                <span className={styles.imageUploadLabel}>
+                  {imageUploadLabel}
+                </span>
+              </>
+            )}
           </label>
           <input
             type='file'
@@ -156,7 +166,7 @@ export const AddAdvertisementForm: React.FC = () => {
           disabled={isLoading}
           className={styles.submitButton}
         >
-          KAYDET
+          {isLoading ? <Icon name='Spinner' size={16} /> : 'KAYDET'}
         </Button>
       </div>
     </form>
