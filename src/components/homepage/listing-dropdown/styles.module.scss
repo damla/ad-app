@@ -21,6 +21,7 @@
   border: 1px solid $dropdown-border-color;
 
   .listItem {
+    color: $text-color;
     border-radius: $dropdown-radius;
     border: unset;
     padding: 0 $btn-padding-horizontal-base;

@@ -8,6 +8,7 @@ import { ChangeEvent, useState } from 'react'
 
 import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
+import { Skeleton } from '@/components/general/skeleton/skeleton'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 import { useForm } from 'react-hook-form'
@@ -48,7 +49,7 @@ export const AddAdvertisementForm: React.FC = () => {
     setIsLoading(true)
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0]
-
+      // TODO: refactor this part
       // Check if file size exceeds 5MB
       if (file.size > 5 * 1024 * 1024) {
         setError('imageUrl', { message: "Görsel boyutu 5MB'dan büyük olamaz" })
@@ -188,5 +189,27 @@ export const AddAdvertisementForm: React.FC = () => {
         </Button>
       </div>
     </form>
+  )
+}
+
+export const AddAdvertisementFormSkeleton: React.FC = () => {
+  return (
+    <div className='centerAlignedItems ptXl'>
+      <div className={classNames(styles.wrapper, 'pl2xl')}>
+        <div className={styles.titleFieldGroupSkeleton}>
+          <Skeleton />
+          <Skeleton />
+        </div>
+        <div className={styles.imageFieldGroupSkeleton}>
+          <Skeleton />
+          <Skeleton />
+        </div>
+        <div className={styles.urgentFieldGroupSkeleton}>
+          <Skeleton />
+          <Skeleton />
+        </div>
+        <Skeleton className={styles.submitButtonSkeleton} />
+      </div>
+    </div>
   )
 }

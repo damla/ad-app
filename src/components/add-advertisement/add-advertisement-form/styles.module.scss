@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
-  padding: 0 $space-md;
+  padding: 0 $space-2xl 0 $space-md;
   gap: $space-xl;
 
   .titleFieldGroup {
@@ -89,6 +89,45 @@
     color: $error-color;
     top: $space-xl;
     left: $space-md;
+  }
+
+  .titleFieldGroupSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xl;
+
+    div:first-child {
+      height: 24px;
+      max-width: 100px;
+    }
+
+    div:last-child {
+      height: 46px;
+    }
+  }
+
+  .imageFieldGroupSkeleton {
+    display: flex;
+    justify-content: space-between;
+
+    div:first-child {
+      height: 42px;
+      flex-basis: 40%;
+    }
+
+    div:last-child {
+      height: 42px;
+      flex-basis: 50%;
+    }
+  }
+
+  .urgentFieldGroupSkeleton {
+    height: 24px;
+    max-width: 90px;
+  }
+
+  .submitButtonSkeleton {
+    height: 40px;
   }
 
   @include lg {
