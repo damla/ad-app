@@ -7,6 +7,10 @@
   padding: 0 $btn-padding-horizontal-xs;
   height: $action-button-size;
 
+  svg {
+    stroke: $stroke-color;
+  }
+
   &:hover {
     svg {
       stroke: $delete-button-hover-stroke-color;
@@ -23,6 +27,12 @@
 
     svg {
       stroke: $delete-button-disabled-stroke-color;
+    }
+  }
+
+  &:active {
+    svg {
+      stroke: $stroke-color;
     }
   }
 }

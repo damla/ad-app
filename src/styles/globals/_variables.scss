@@ -115,12 +115,15 @@ $dropdown-item-background-hover: $background-color-light;
 
 // CARD
 $card-radius: 0.5rem; // 8px
-$card-minmax-width: 350px;
+$card-minmax-width: 310px;
 $card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
-// FAVORITE BUTTON
+// ACTION BUTTONS
+$stroke-color: $text-color;
 $action-button-size: 30px;
+
+// FAVORITE BUTTON
 $favorite-button-fill-color: #f56565;
 $favorite-button-disabled-color: $text-color-light-grey;
 

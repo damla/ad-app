@@ -7,6 +7,10 @@
   padding: 0 $btn-padding-horizontal-xs;
   height: $action-button-size;
 
+  svg {
+    stroke: $stroke-color;
+  }
+
   &:hover {
     svg {
       fill: $favorite-button-fill-color;
@@ -20,6 +24,12 @@
     svg {
       fill: $favorite-button-disabled-color;
       stroke: $favorite-button-disabled-color;
+    }
+  }
+
+  &:active {
+    svg {
+      stroke: $stroke-color;
     }
   }
 }

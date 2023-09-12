@@ -42,7 +42,7 @@ const ListingDropdown: React.FC = () => {
   return (
     <div ref={dropdownRef}>
       <Button onClick={() => setIsOpen(!isOpen)} className={styles.button}>
-        <Icon name='SettingsIcon' size={18} />
+        <Icon name='SettingsIcon' size={18} className={styles.icon} />
       </Button>
       {isOpen && (
         <ul className={styles.list}>
