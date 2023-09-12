@@ -5,6 +5,7 @@ import {
   ADVERTISEMENT_VALIDATION_SCHEMA
 } from './validation'
 import { ChangeEvent, useState } from 'react'
+import { checkFile, uploadToCloudinary } from '@/utils/helpers'
 
 import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
@@ -17,11 +18,6 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { yupResolver } from '@hookform/resolvers/yup'
-
-const cloudinaryInfo = {
-  CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUD_NAME || '',
-  UPLOAD_PRESET: process.env.NEXT_PUBLIC_UPLOAD_PRESET || ''
-}
 
 export const AddAdvertisementForm: React.FC = () => {
   const [imageUploadLabel, setImageUploadLabel] = useState<string>('Yükle')
@@ -47,47 +43,25 @@ export const AddAdvertisementForm: React.FC = () => {
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true)
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
-      // TODO: refactor this part
-      // Check if file size exceeds 5MB
-      if (file.size > 5 * 1024 * 1024) {
-        setError('imageUrl', { message: "Görsel boyutu 5MB'dan büyük olamaz" })
-        setIsLoading(false)
-        return
-      }
 
-      // Check for accepted MIME types
-      if (file.type !== 'image/png' && file.type !== 'image/jpeg') {
-        setError('imageUrl', {
-          message: 'Lütfen png veya jpeg formatında görsel yükleyiniz'
-        })
-        setIsLoading(false)
-        return
-      }
+    const file = e.target?.files?.[0]
+    const fileCheckResult = checkFile(file)
 
-      const formData = new FormData()
-      formData.append('file', e.target.files[0])
-      formData.append('upload_preset', cloudinaryInfo.UPLOAD_PRESET)
+    if (!fileCheckResult.file) {
+      setError('imageUrl', { message: fileCheckResult.error })
+      setIsLoading(false)
+      return
+    }
 
-      try {
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${cloudinaryInfo.CLOUD_NAME}/upload/`,
-          {
-            method: 'POST',
-            body: formData
-          }
-        )
-        const data = await response.json()
-
-        setValue('imageUrl', data.secure_url)
-        setImageUploadLabel(e.target.files[0].name)
-        clearErrors('imageUrl')
-      } catch (error) {
-        setError('imageUrl', { message: 'Bir hata oluştu' })
-      } finally {
-        setIsLoading(false)
-      }
+    try {
+      const data = await uploadToCloudinary(fileCheckResult.file)
+      setValue('imageUrl', data.secure_url)
+      setImageUploadLabel(fileCheckResult.file.name)
+      clearErrors('imageUrl')
+    } catch (error) {
+      setError('imageUrl', { message: 'Bir hata oluştu' })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -99,20 +73,17 @@ export const AddAdvertisementForm: React.FC = () => {
     })
 
     if (response.ok) {
-      router.refresh()
-      router.push('/')
+      showToast(
+        'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
+        'success'
+      )
     } else {
       const error = await response.text()
       showToast(error, 'error')
-      reset()
     }
-
     reset()
     setImageUploadLabel('Yükle')
-    showToast(
-      'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
-      'success'
-    )
+    router.refresh()
     router.push('/')
   }
 

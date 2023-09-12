@@ -59,6 +59,9 @@
     gap: $space-xxs;
 
     .title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       font-size: $font-size-lg;
       font-weight: $font-weight-medium;
       margin-bottom: $space-xxs;

@@ -48,9 +48,7 @@ export const Ad: React.FC<Props> = ({ data, imgPriority }) => {
           </span>
           <span>
             <Icon name='CalendarIcon' />
-            <time>
-              Son Güncellenme: {date}
-            </time>
+            <time>Son Güncellenme: {date}</time>
           </span>
         </div>
       </div>
