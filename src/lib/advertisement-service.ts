@@ -3,6 +3,9 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library'
 import prisma from './prisma'
 
 export const getAdvertisements = async () => {
+  'use server'
+  // Used server actions to fetch data on request
+
   try {
     const advertisements: Advertisement[] = await prisma.advertisement.findMany(
       {
