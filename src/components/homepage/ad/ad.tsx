@@ -9,10 +9,10 @@ import useFormattedDate from '@/hooks/use-formatted-date'
 
 interface Props {
   data: Advertisement
-  imgPriority: boolean
+  imgPriority?: boolean
 }
 
-export const Ad: React.FC<Props> = ({ data, imgPriority }) => {
+export const Ad: React.FC<Props> = ({ data, imgPriority = false }) => {
   const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
 
   const date = useFormattedDate(lastUpdated)

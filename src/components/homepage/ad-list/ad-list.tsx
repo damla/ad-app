@@ -20,10 +20,10 @@ export const AdList: React.FC<Props> = ({ ads }) => {
     }
     return data.map((ad, index) => (
       <Fragment key={`ad-card-${index}`}>
-        {index > 5 ? (
-          <Ad data={ad} imgPriority={data.length > 6} />
+        {index < 6 ? (
+          <Ad data={ad} imgPriority={true} />
         ) : (
-          <Ad data={ad} imgPriority={false} />
+          <Ad data={ad}  />
         )}
       </Fragment>
     ))
