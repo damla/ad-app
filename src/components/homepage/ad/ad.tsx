@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Skeleton } from '@/components/general/skeleton/skeleton'
 import moment from 'moment'
 import styles from './styles.module.scss'
+import useFormattedDate from '@/hooks/use-formatted-date'
 
 interface Props {
   data: Advertisement
@@ -14,6 +15,8 @@ interface Props {
 
 export const Ad: React.FC<Props> = ({ data, imgPriority }) => {
   const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
+
+  const date = useFormattedDate(lastUpdated)
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>
@@ -46,7 +49,7 @@ export const Ad: React.FC<Props> = ({ data, imgPriority }) => {
           <span>
             <Icon name='CalendarIcon' />
             <time>
-              Son Güncellenme: {moment(lastUpdated).format('DD.MM.YYYY HH:mm')}
+              Son Güncellenme: {date}
             </time>
           </span>
         </div>
