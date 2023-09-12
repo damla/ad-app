@@ -32,10 +32,10 @@ export const SortOptionProvider = ({ children }: SortOptionProviderProps) => {
   )
 
   useEffect(() => {
-    const savedSortOption = localStorage.getItem('sortOption');
+    const savedSortOption = localStorage.getItem('sortOption')
 
     if (Object.values(SORT_OPTION).includes(savedSortOption as SORT_OPTION)) {
-      setSortOption(savedSortOption as SORT_OPTION);
+      setSortOption(savedSortOption as SORT_OPTION)
     }
   }, [])
 
