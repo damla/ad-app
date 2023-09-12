@@ -19,6 +19,7 @@
 
   &:disabled {
     background-color: $delete-button-disabled-background-color;
+    cursor: not-allowed;
 
     svg {
       stroke: $delete-button-disabled-stroke-color;
