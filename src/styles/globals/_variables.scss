@@ -122,10 +122,13 @@ $card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
 // FAVORITE BUTTON
 $action-button-size: 30px;
 $favorite-button-fill-color: #f56565;
+$favorite-button-disabled-color: $text-color-light-grey;
 
 // DELETE BUTTON
 $delete-button-stroke-color: $error-color;
 $delete-button-hover-stroke-color: $border-error-toast;
+$delete-button-disabled-stroke-color: $text-color-lighter-grey;
+$delete-button-disabled-background-color: $background-color-light;
 
 // URGENT BADGE
 $urgent-badge-background-color: #ef4444;

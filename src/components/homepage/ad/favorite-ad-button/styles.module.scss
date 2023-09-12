@@ -13,4 +13,11 @@
       stroke: $favorite-button-fill-color;
     }
   }
+
+  &:disabled {
+    svg {
+      fill: $favorite-button-disabled-color;
+      stroke: $favorite-button-disabled-color;
+    }
+  }
 }

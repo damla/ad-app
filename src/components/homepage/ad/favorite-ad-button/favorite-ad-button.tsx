@@ -1,8 +1,9 @@
 'use client'
 
+import { startTransition, useState } from 'react'
+
 import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
-import { startTransition } from 'react'
 import styles from './styles.module.scss'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
@@ -16,7 +17,10 @@ const FavoriteAdButton: React.FC<Props> = ({ id, favoriteCount }) => {
   const router = useRouter()
   const { showToast } = useToast()
 
+  const [isFavoriting, setIsFavoriting] = useState<boolean>(false)
+
   const handleFavorite = async (id: string) => {
+    setIsFavoriting(true)
     if (!id) {
       showToast('İlan favorilenirken bir sorun oluştu.', 'error')
       return
@@ -31,9 +35,11 @@ const FavoriteAdButton: React.FC<Props> = ({ id, favoriteCount }) => {
     if (!response.ok) {
       const errorMessage = await response.text()
       showToast(`Favori işleminde bir sorun oluştu: ${errorMessage}`, 'error')
+      setIsFavoriting(false)
       return
     }
 
+    setIsFavoriting(false)
     showToast('İlan başarıyla favorilendi.', 'success')
     startTransition(() => {
       router.refresh()
@@ -41,7 +47,11 @@ const FavoriteAdButton: React.FC<Props> = ({ id, favoriteCount }) => {
   }
 
   return (
-    <Button className={styles.button} onClick={() => handleFavorite(id)}>
+    <Button
+      className={styles.button}
+      onClick={() => handleFavorite(id)}
+      disabled={isFavoriting}
+    >
       <Icon name='HeartIcon' size={20} />
     </Button>
   )
