@@ -8,6 +8,14 @@
   transform: translateX(-50%);
   padding: $space-sm $space-xl;
   border-radius: $btn-border-radius-base;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
 
   &.success {
     background-color: $success-bg;

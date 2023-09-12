@@ -8,11 +8,10 @@ import { useContext } from 'react'
 const Toast: React.FC = () => {
   const { state } = useContext(ToastContext)
 
-  if (!state.display) return null
-
   return (
     <div
       className={classNames(styles.wrapper, {
+        [styles.show]: state.display,
         [styles.success]: state.type === 'success',
         [styles.error]: state.type === 'error'
       })}
