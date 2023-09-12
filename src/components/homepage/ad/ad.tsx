@@ -3,6 +3,7 @@ import DeleteAdButton from './delete-ad-button/delete-ad-button'
 import FavoriteAdButton from './favorite-ad-button/favorite-ad-button'
 import Icon from '@/components/general/icon/icon'
 import Image from 'next/image'
+import { Skeleton } from '@/components/general/skeleton/skeleton'
 import moment from 'moment'
 import styles from './styles.module.scss'
 
@@ -47,6 +48,27 @@ export const Ad: React.FC<Props> = ({ data, imgPriority }) => {
             <time>
               Son Güncellenme: {moment(lastUpdated).format('DD.MM.YYYY HH:mm')}
             </time>
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const AdSkeleton: React.FC = () => {
+  return (
+    <div className={styles.cardContainer}>
+      <div className={styles.wrapper}>
+        <Skeleton className={styles.imageSkeleton} />
+        <div className={styles.content}>
+          <Skeleton className={styles.titleSkeleton} />
+          <span>
+            <Icon name='HeartIcon' />
+            <Skeleton className={styles.textSkeleton} />
+          </span>
+          <span>
+            <Icon name='CalendarIcon' />
+            <Skeleton className={styles.textSkeleton} />
           </span>
         </div>
       </div>

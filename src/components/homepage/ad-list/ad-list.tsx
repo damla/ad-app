@@ -30,3 +30,11 @@ export const AdList: React.FC<Props> = ({ ads }) => {
   }
   return <div className={styles.wrapper}>{adList()}</div>
 }
+
+interface AdListSkeletonProps {
+  children: React.ReactNode
+}
+
+export const AdListSkeleton: React.FC<AdListSkeletonProps> = ({ children }) => {
+  return <div className={styles.wrapper}>{children}</div>
+}
