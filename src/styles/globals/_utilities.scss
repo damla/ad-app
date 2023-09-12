@@ -139,6 +139,7 @@
 }
 
 // GENERAL STYLING UTILITIES
+
 .clickable {
   cursor: pointer;
 }
@@ -162,6 +163,14 @@
 
 .cardShadow {
   box-shadow: $card-shadow;
+}
+
+.pre {
+  border: 1px solid $border-color-base;
+  color: $text-color-white;
+  background-color: $background-color-dark;
+  padding: $space-3xl;
+  border-radius: $btn-border-radius-md;
 }
 
 .container {
