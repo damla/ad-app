@@ -1,20 +1,9 @@
-'use client'
-
-import Button from '@/components/general/button/button'
 import Image from 'next/image'
 import Link from 'next/link'
+import classNames from 'classnames'
 import styles from './styles.module.scss'
-// Because of using App dir, we need to use next/navigation instead of next/router
-// See here: https://nextjs.org/docs/messages/next-router-not-mounted
-import { useRouter } from 'next/navigation'
 
 const Header: React.FC = () => {
-  const router = useRouter()
-
-  const handleClick = () => {
-    router.push('/add-advertisement')
-  }
-
   return (
     <header className={styles.header}>
       <Link href='/' className={styles.logo}>
@@ -23,7 +12,12 @@ const Header: React.FC = () => {
       <nav>
         <ul>
           <li>
-            <Button onClick={handleClick}>Yeni ilan ekle</Button>
+            <Link
+              href='/add-advertisement'
+              className={classNames('button', styles.button)}
+            >
+              Yeni ilan ekle
+            </Link>
           </li>
         </ul>
       </nav>

@@ -8,10 +8,16 @@
   justify-content: space-between;
   padding: $space-lg $space-3xl;
   background-color: $background-color-grey;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $navbar-bottom-shadow;
 
   .logo {
     display: inline-flex;
     align-items: center;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
   }
 }

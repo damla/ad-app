@@ -11,6 +11,8 @@ import Icon from '@/components/general/icon/icon'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 import { useForm } from 'react-hook-form'
+// Because of using App dir, we need to use next/navigation instead of next/router
+// See here: https://nextjs.org/docs/messages/next-router-not-mounted
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { yupResolver } from '@hookform/resolvers/yup'
