@@ -155,6 +155,7 @@ export const AddAdvertisementForm: React.FC = () => {
             style={{ display: 'none' }}
             accept='image/png, image/jpeg'
             onChange={handleFileChange}
+            disabled={isLoading}
           />
         </div>
         <div className={styles.urgentFieldGroup}>
