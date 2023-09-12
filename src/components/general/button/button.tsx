@@ -8,7 +8,7 @@ interface Props {
   type?: 'button' | 'submit' | 'reset'
 }
 
-const Button: React.FC<Props> = ({
+export const Button: React.FC<Props> = ({
   className,
   disabled,
   onClick,
@@ -26,5 +26,3 @@ const Button: React.FC<Props> = ({
     </button>
   )
 }
-
-export default Button

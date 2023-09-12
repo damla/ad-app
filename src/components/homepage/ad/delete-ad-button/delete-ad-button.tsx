@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/components/general/button/button'
+import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
 import { startTransition } from 'react'
 import styles from './styles.module.scss'

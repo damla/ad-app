@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-import Button from '@/components/general/button/button'
+import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
 import { SORT_OPTION } from '@/types'
 import { capitalizeFirstLetter } from '@/utils/helpers'

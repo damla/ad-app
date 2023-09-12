@@ -1,0 +1,12 @@
+.skeleton {
+  border-collapse: collapse;
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: linear-gradient(to right, #f7f7fa80 8%, #f3f3f5 18%, #f7f7fa 33%);
+  background-size: 200% 50px;
+  border: 2px solid #f7f7fa80;
+  height: 1rem;
+}

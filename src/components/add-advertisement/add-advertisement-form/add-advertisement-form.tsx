@@ -6,7 +6,7 @@ import {
 } from './validation'
 import { ChangeEvent, useState } from 'react'
 
-import Button from '@/components/general/button/button'
+import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
@@ -22,7 +22,7 @@ const cloudinaryInfo = {
   UPLOAD_PRESET: process.env.NEXT_PUBLIC_UPLOAD_PRESET || ''
 }
 
-const AddAdvertisementForm: React.FC = () => {
+export const AddAdvertisementForm: React.FC = () => {
   const [imageUploadLabel, setImageUploadLabel] = useState<string>('Yükle')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const formOptions = {
@@ -190,5 +190,3 @@ const AddAdvertisementForm: React.FC = () => {
     </form>
   )
 }
-
-export default AddAdvertisementForm

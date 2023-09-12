@@ -6,7 +6,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
+export const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -18,5 +18,3 @@ const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
     </div>
   )
 }
-
-export default Breadcrumb

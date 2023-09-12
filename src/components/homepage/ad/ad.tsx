@@ -11,7 +11,7 @@ interface Props {
   imgPriority: boolean
 }
 
-const Ad: React.FC<Props> = ({ data, imgPriority }) => {
+export const Ad: React.FC<Props> = ({ data, imgPriority }) => {
   const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
   return (
     <div className={styles.cardContainer}>
@@ -29,7 +29,7 @@ const Ad: React.FC<Props> = ({ data, imgPriority }) => {
         <div className={styles.imageWrapper}>
           <Image
             src={imageUrl}
-            alt='Advertisement'
+            alt='advertisement image'
             className={styles.image}
             fill
             priority={imgPriority}
@@ -53,5 +53,3 @@ const Ad: React.FC<Props> = ({ data, imgPriority }) => {
     </div>
   )
 }
-
-export default Ad

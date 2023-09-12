@@ -1,6 +1,6 @@
 'use client'
 
-import Ad from '@/components/homepage/ad/ad'
+import { Ad } from '@/components/homepage/ad/ad'
 import { Advertisement } from '@prisma/client'
 import { Fragment } from 'react'
 import styles from './styles.module.scss'
@@ -10,7 +10,7 @@ interface Props {
   ads: Advertisement[]
 }
 
-const AdList: React.FC<Props> = ({ ads }) => {
+export const AdList: React.FC<Props> = ({ ads }) => {
   const { sortedAds } = useSortOption()
   const data = sortedAds(ads)
 
@@ -30,4 +30,3 @@ const AdList: React.FC<Props> = ({ ads }) => {
   }
   return <div className={styles.wrapper}>{adList()}</div>
 }
-export default AdList

@@ -1,5 +1,5 @@
-import AdList from './ad-list/ad-list'
-import Breadcrumb from '@/components/general/breadcrumb/breadcrumb'
+import { AdList } from './ad-list/ad-list'
+import { Breadcrumb } from '@/components/general/breadcrumb/breadcrumb'
 import ListingDropdown from './listing-dropdown/listing-dropdown'
 import { getAdvertisements } from '@/lib/advertisement-service'
 
