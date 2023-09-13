@@ -4,5 +4,5 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: ad_app_db
+      POSTGRES_DB: ad_app_dev
       POSTGRES_HOST_AUTH_METHOD: trust
