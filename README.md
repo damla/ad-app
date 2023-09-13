@@ -61,6 +61,10 @@ docker compose up
 pnpm prisma generate && pnpm prisma db push && pnpm prisma db seed
 ```
 
+### Notes
+
+- Normally, user needs to generate a new upload preset in Cloudinary and use it in the project. However, for the sake of simplicity, I am sharing my own upload preset in `.env` file. If you want to use your own [upload preset](https://cloudinary.com/documentation/upload_presets), you can update the `.env` file accordingly.
+
 ### Executing program
 
 - To run the project in development mode:
