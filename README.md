@@ -24,6 +24,8 @@
 - **yup**: A JavaScript schema builder for value parsing and validation.
 - **Supabase**: Open source Firebase alternative which provides PostgreSQL database hosting.
 - **Vercel**: Cloud platform for static sites and Serverless Functions.
+- **Context API**: Context provides a way to pass data through the component tree without having to pass props down manually at every level.
+- **Local Storage**: Web API for storing data in the browser.
 
 - Icons are from [Heroicons](https://heroicons.com/).
 
