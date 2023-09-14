@@ -23,8 +23,8 @@ const DeleteAdButton: React.FC<Props> = ({ id }) => {
   const { isLoading, mutate } = useMutation({
     mutationFn: deleteAdvertisement,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['ads'] })
       showToast('İlan başarıyla silindi.', 'success')
+      queryClient.invalidateQueries({ queryKey: ['ads'] })
     },
     onError: () => {
       showToast('İlan silinirken bir sorun oluştu.', 'error')

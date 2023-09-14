@@ -10,9 +10,12 @@ import { checkFile, uploadToCloudinary } from '@/utils/helpers'
 import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
 import { Skeleton } from '@/components/general/skeleton/skeleton'
+import { addAdvertisements } from '@/lib/query-service'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 import { useForm } from 'react-hook-form'
+import { useMutation } from '@tanstack/react-query'
+import { useQueryClientInstance } from '@/context/query-client.context'
 // Because of using App dir, we need to use next/navigation instead of next/router
 // See: https://nextjs.org/docs/messages/next-router-not-mounted
 import { useRouter } from 'next/navigation'
@@ -41,6 +44,22 @@ export const AddAdvertisementForm: React.FC = () => {
   } = useForm(formOptions)
   const { errors } = formState
 
+  const { queryClient } = useQueryClientInstance()
+
+  const { isLoading: dataLoading, mutate } = useMutation({
+    mutationFn: addAdvertisements,
+    onSuccess: () => {
+      showToast(
+        'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
+        'success'
+      )
+      queryClient.invalidateQueries({ queryKey: ['ads'] })
+    },
+    onError: () => {
+      showToast('İlan eklenirken bir sorun oluştu.', 'error')
+    }
+  })
+
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true)
 
@@ -66,25 +85,17 @@ export const AddAdvertisementForm: React.FC = () => {
   }
 
   const onSubmit = async () => {
-    const response = await fetch('/api/advertisements', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...watch() })
-    })
-
-    if (response.ok) {
-      showToast(
-        'İlan başarıyla kaydedilmiştir. Ana sayfaya yönlendiriliyorsunuz',
-        'success'
-      )
-    } else {
-      const error = await response.text()
-      showToast(error, 'error')
-    }
-    reset()
-    setImageUploadLabel('Yükle')
-    router.refresh()
-    router.push('/')
+    mutate(
+      { ...watch() },
+      {
+        onSuccess: () => {
+          reset()
+          setImageUploadLabel('Yükle')
+          router.refresh()
+          router.push('/')
+        }
+      }
+    )
   }
 
   return (
