@@ -11,7 +11,7 @@ const useFormattedDate = (date: Date) => {
 
   useEffect(
     () => setFormattedDate(moment(date).format('DD.MM.YYYY HH:mm')),
-    [] // eslint-disable-line react-hooks/exhaustive-deps
+    [date]
   )
 
   return formattedDate
