@@ -1,6 +1,7 @@
 'use client'
 
-import { Ad } from '@/components/homepage/ad/ad'
+import { Ad, AdSkeleton } from '@/components/homepage/ad/ad'
+
 import { Advertisement } from '@prisma/client'
 import { Fragment } from 'react'
 import { getAdvertisements } from '@/lib/query-service'
@@ -22,7 +23,15 @@ export const AdList = () => {
 
   const adList = () => {
     if (isLoading) {
-      return <p>Yükleniyor...</p>
+      return (
+        <>
+          {Array(3)
+            .fill(null)
+            .map((_, index) => (
+              <AdSkeleton key={index} />
+            ))}
+        </>
+      )
     }
     if (error) {
       return <p>Bir sorun oluştu.</p>

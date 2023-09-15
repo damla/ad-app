@@ -8,7 +8,6 @@ import getQueryClient from '@/lib/getQueryClient'
 
 const HomePage = async () => {
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(['ads'], getAdvertisements)
   const dehydratedState = dehydrate(queryClient)
 
   return (
