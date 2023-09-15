@@ -6,7 +6,7 @@ import { ToastContext } from '@/context/toast.context'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 
-const Toast: React.FC = () => {
+const Toast = () => {
   const {
     state: { display, type, message }
   } = useContext(ToastContext)

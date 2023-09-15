@@ -4,7 +4,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-const Main: React.FC<Props> = ({ children }) => {
+const Main = ({ children }: Props) => {
   return <main className={styles.main}>{children}</main>
 }
 

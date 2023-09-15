@@ -15,8 +15,7 @@ interface Props {
   favoriteCount: number
 }
 
-const FavoriteAdButton: React.FC<Props> = ({ id, favoriteCount }) => {
-  const router = useRouter()
+const FavoriteAdButton = ({ id, favoriteCount }: Props) => {
   const { showToast } = useToast()
 
   const { queryClient } = useQueryClientInstance()
@@ -33,16 +32,7 @@ const FavoriteAdButton: React.FC<Props> = ({ id, favoriteCount }) => {
   })
 
   const handleFavorite = () => {
-    mutate(
-      { id, favoriteCount },
-      {
-        onSuccess: () => {
-          startTransition(() => {
-            router.refresh()
-          })
-        }
-      }
-    )
+    mutate({ id, favoriteCount })
   }
 
   return (

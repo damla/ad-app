@@ -6,7 +6,7 @@ import { dehydrate } from '@tanstack/react-query'
 import { getAdvertisements } from '@/lib/query-service'
 import getQueryClient from '@/lib/getQueryClient'
 
-const HomePage: React.FC = async () => {
+const HomePage = async () => {
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery(['ads'], getAdvertisements)
   const dehydratedState = dehydrate(queryClient)

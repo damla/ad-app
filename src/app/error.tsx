@@ -8,7 +8,7 @@ interface Props {
   reset: () => void
 }
 
-const Error: React.FC<Props> = ({ error, reset }) => {
+const Error = ({ error, reset }: Props) => {
   const [show, setShow] = useState(false)
   const showError = () => {
     setShow(true)

@@ -12,7 +12,7 @@ interface Props {
   imgPriority?: boolean
 }
 
-export const Ad: React.FC<Props> = ({ data, imgPriority = false }) => {
+export const Ad = ({ data, imgPriority = false }: Props) => {
   const { id, isUrgent, imageUrl, title, favoriteCount, lastUpdated } = data
 
   const date = useFormattedDate(lastUpdated)
@@ -55,7 +55,7 @@ export const Ad: React.FC<Props> = ({ data, imgPriority = false }) => {
   )
 }
 
-export const AdSkeleton: React.FC = () => {
+export const AdSkeleton = () => {
   return (
     <div className={styles.cardContainer}>
       <div className={styles.wrapper}>

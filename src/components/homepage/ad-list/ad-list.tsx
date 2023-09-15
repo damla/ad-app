@@ -8,7 +8,7 @@ import styles from './styles.module.scss'
 import { useQuery } from '@tanstack/react-query'
 import { useSortOption } from '@/hooks/use-sort-option'
 
-export const AdList: React.FC = () => {
+export const AdList = () => {
   const {
     data: ads,
     isLoading,
@@ -45,6 +45,6 @@ interface AdListSkeletonProps {
   children: React.ReactNode
 }
 
-export const AdListSkeleton: React.FC<AdListSkeletonProps> = ({ children }) => {
+export const AdListSkeleton = ({ children }: AdListSkeletonProps) => {
   return <div className={styles.wrapper}>{children}</div>
 }

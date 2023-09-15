@@ -3,9 +3,9 @@ import Link from 'next/link'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
-    <header className={styles.header} id="header">
+    <header className={styles.header} id='header'>
       <Link href='/' className={styles.logo}>
         <Image src='/logo.png' alt='Ad Logo' width={40} height={40} priority />
       </Link>

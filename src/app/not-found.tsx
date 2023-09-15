@@ -7,7 +7,7 @@ interface Props {
   reset: () => void
 }
 
-const Error: React.FC<Props> = ({ error, reset }) => {
+const Error = ({ error, reset }: Props) => {
   return (
     <div className='textCenter'>
       <h2 className='mb3xl'>Sayfa bulunamadı!</h2>

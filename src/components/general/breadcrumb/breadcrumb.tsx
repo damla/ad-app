@@ -7,7 +7,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-export const Breadcrumb: React.FC<Props> = ({ page, subtitle, children }) => {
+export const Breadcrumb = ({ page, subtitle, children }: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -24,9 +24,7 @@ interface BreadcrumbSkeletonProps {
   children?: React.ReactNode
 }
 
-export const BreadcrumbSkeleton: React.FC<BreadcrumbSkeletonProps> = ({
-  children
-}) => {
+export const BreadcrumbSkeleton = ({ children }: BreadcrumbSkeletonProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.titleSkeleton}>

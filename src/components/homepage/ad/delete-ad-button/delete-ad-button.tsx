@@ -3,19 +3,16 @@
 import { Button } from '@/components/general/button/button'
 import Icon from '@/components/general/icon/icon'
 import { deleteAdvertisement } from '@/lib/query-service'
-import { startTransition } from 'react'
 import styles from './styles.module.scss'
 import { useMutation } from '@tanstack/react-query'
 import { useQueryClientInstance } from '@/context/query-client.context'
-import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 
 interface Props {
   id: string
 }
 
-const DeleteAdButton: React.FC<Props> = ({ id }) => {
-  const router = useRouter()
+const DeleteAdButton = ({ id }: Props) => {
   const { showToast } = useToast()
 
   const { queryClient } = useQueryClientInstance()
@@ -32,16 +29,7 @@ const DeleteAdButton: React.FC<Props> = ({ id }) => {
   })
 
   const handleDelete = () => {
-    mutate(
-      { id },
-      {
-        onSuccess: () => {
-          startTransition(() => {
-            router.refresh()
-          })
-        }
-      }
-    )
+    mutate({ id })
   }
 
   return (

@@ -10,7 +10,7 @@ interface Props {
   className?: string
 }
 
-const Icon: React.FC<Props> = ({ name, size, className }) => {
+const Icon = ({ name, size, className }: Props) => {
   const Component = iconNameMap[name]
 
   return (
