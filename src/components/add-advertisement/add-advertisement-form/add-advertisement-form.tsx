@@ -46,7 +46,7 @@ export const AddAdvertisementForm = () => {
 
   const { queryClient } = useQueryClientInstance()
 
-  const { isLoading: dataLoading, mutate } = useMutation({
+  const { isLoading: dataIsLoading, mutate } = useMutation({
     mutationFn: addAdvertisements,
     onSuccess: () => {
       showToast(
@@ -89,9 +89,7 @@ export const AddAdvertisementForm = () => {
       { ...watch() },
       {
         onSuccess: () => {
-          reset()
           setImageUploadLabel('Yükle')
-          router.refresh()
           router.push('/')
         }
       }
@@ -175,7 +173,7 @@ export const AddAdvertisementForm = () => {
         </div>
         <Button
           type='submit'
-          disabled={isLoading}
+          disabled={isLoading || dataIsLoading}
           className={styles.submitButton}
         >
           {isLoading ? <Icon name='Spinner' size={16} /> : 'KAYDET'}

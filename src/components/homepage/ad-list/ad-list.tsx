@@ -30,8 +30,8 @@ export const AdList = () => {
     if (!ads || ads.length === 0) {
       return <p>Henüz ilan bulunmamaktadır.</p>
     }
-
     const data = sortedAds(ads)
+
     return data.map((ad, index) => (
       <Fragment key={`ad-card-${index}`}>
         {index < 6 ? <Ad data={ad} imgPriority={true} /> : <Ad data={ad} />}
