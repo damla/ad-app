@@ -26,8 +26,7 @@
 - **Vercel**: Cloud platform for static sites and Serverless Functions.
 - **Context API**: Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 - **Local Storage**: Web API for storing data in the browser.
-
-- Icons are from [Heroicons](https://heroicons.com/).
+- **HeroIcons**: A set of free MIT-licensed high-quality SVG icons for UI development.
 
 ## Getting Started
 
@@ -65,7 +64,7 @@ pnpm prisma generate && pnpm prisma db push && pnpm prisma db seed
 
 ### Notes
 
-- Normally, user needs to generate a new upload preset in Cloudinary and use it in the project. However, for the sake of simplicity, I am sharing my own upload preset in `.env` file. If you want to use your own [upload preset](https://cloudinary.com/documentation/upload_presets), you can update the `.env` file accordingly.
+- User needs to generate a new [upload preset](https://cloudinary.com/documentation/upload_presets) in Cloudinary and use it in the project by updating the `.env` file accordingly.
 
 ### Executing program
 
