@@ -5,6 +5,7 @@ import Header from '@/components/layout/header/header'
 import { Inter } from 'next/font/google'
 import Main from '@/components/layout/main/main'
 import type { Metadata } from 'next'
+import { ReactQueryProviders } from '@/context/react-query.context'
 import { SortOptionProvider } from '@/context/sort-option.context'
 import Toast from '@/components/general/toast/toast'
 import { ToastProvider } from '@/context/toast.context'
@@ -19,23 +20,24 @@ export const metadata: Metadata = {
   }
 }
 
-
 interface Props {
   children: React.ReactNode
 }
 
-const RootLayout: React.FC<Props> = ({ children }) => {
+const RootLayout = ({ children }: Props) => {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ToastProvider>
-          <Toast />
-          <Header />
-          <SortOptionProvider>
-            <Main>{children}</Main>
-            <Footer />
-          </SortOptionProvider>
-        </ToastProvider>
+        <ReactQueryProviders>
+          <ToastProvider>
+            <Toast />
+            <Header />
+            <SortOptionProvider>
+              <Main>{children}</Main>
+              <Footer />
+            </SortOptionProvider>
+          </ToastProvider>
+        </ReactQueryProviders>
       </body>
     </html>
   )
