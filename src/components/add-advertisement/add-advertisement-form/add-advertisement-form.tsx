@@ -19,7 +19,7 @@ import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-export const AddAdvertisementForm: React.FC = () => {
+export const AddAdvertisementForm = () => {
   const [imageUploadLabel, setImageUploadLabel] = useState<string>('Yükle')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const formOptions = {
@@ -81,7 +81,6 @@ export const AddAdvertisementForm: React.FC = () => {
       const error = await response.text()
       showToast(error, 'error')
     }
-    reset()
     setImageUploadLabel('Yükle')
     router.refresh()
     router.push('/')
@@ -174,7 +173,7 @@ export const AddAdvertisementForm: React.FC = () => {
   )
 }
 
-export const AddAdvertisementFormSkeleton: React.FC = () => {
+export const AddAdvertisementFormSkeleton = () => {
   return (
     <div className='centerAlignedItems ptXl'>
       <div className={classNames(styles.wrapper, 'pl2xl')}>

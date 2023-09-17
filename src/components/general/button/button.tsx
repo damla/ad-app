@@ -8,13 +8,13 @@ interface Props {
   type?: 'button' | 'submit' | 'reset'
 }
 
-export const Button: React.FC<Props> = ({
+export const Button = ({
   className,
   disabled,
   onClick,
   children,
   type
-}) => {
+}: Props) => {
   return (
     <button
       onClick={onClick}

@@ -13,7 +13,7 @@ interface Props {
   favoriteCount: number
 }
 
-const FavoriteAdButton: React.FC<Props> = ({ id, favoriteCount }) => {
+const FavoriteAdButton = ({ id, favoriteCount }: Props) => {
   const router = useRouter()
   const { showToast } = useToast()
 

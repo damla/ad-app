@@ -10,7 +10,7 @@ interface Props {
   ads: Advertisement[]
 }
 
-export const AdList: React.FC<Props> = ({ ads }) => {
+export const AdList = ({ ads }: Props) => {
   const { sortedAds } = useSortOption()
   const data = sortedAds(ads)
 
@@ -20,11 +20,7 @@ export const AdList: React.FC<Props> = ({ ads }) => {
     }
     return data.map((ad, index) => (
       <Fragment key={`ad-card-${index}`}>
-        {index < 6 ? (
-          <Ad data={ad} imgPriority={true} />
-        ) : (
-          <Ad data={ad}  />
-        )}
+        {index < 6 ? <Ad data={ad} imgPriority={true} /> : <Ad data={ad} />}
       </Fragment>
     ))
   }
@@ -35,6 +31,6 @@ interface AdListSkeletonProps {
   children: React.ReactNode
 }
 
-export const AdListSkeleton: React.FC<AdListSkeletonProps> = ({ children }) => {
+export const AdListSkeleton = ({ children }: AdListSkeletonProps) => {
   return <div className={styles.wrapper}>{children}</div>
 }

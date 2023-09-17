@@ -9,7 +9,7 @@ import { capitalizeFirstLetter } from '@/utils/helpers'
 import styles from './styles.module.scss'
 import { useSortOption } from '@/hooks/use-sort-option'
 
-const ListingDropdown: React.FC = () => {
+const ListingDropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 

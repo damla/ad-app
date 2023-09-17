@@ -3,7 +3,7 @@ import { Breadcrumb } from '@/components/general/breadcrumb/breadcrumb'
 import ListingDropdown from './listing-dropdown/listing-dropdown'
 import { getAdvertisements } from '@/lib/advertisement-service'
 
-const HomePage: React.FC = async () => {
+const HomePage = async () => {
   const data = await getAdvertisements()
 
   return (

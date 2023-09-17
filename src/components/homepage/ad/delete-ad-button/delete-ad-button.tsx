@@ -12,7 +12,7 @@ interface Props {
   id: string
 }
 
-const DeleteAdButton: React.FC<Props> = ({ id }) => {
+const DeleteAdButton = ({ id }: Props) => {
   const router = useRouter()
   const { showToast } = useToast()
 

@@ -19,12 +19,11 @@ export const metadata: Metadata = {
   }
 }
 
-
 interface Props {
   children: React.ReactNode
 }
 
-const RootLayout: React.FC<Props> = ({ children }) => {
+const RootLayout = ({ children }: Props) => {
   return (
     <html lang='en'>
       <body className={inter.className}>

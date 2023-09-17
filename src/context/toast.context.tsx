@@ -54,7 +54,7 @@ interface Props {
   children: React.ReactNode
 }
 
-export const ToastProvider: React.FC<Props> = ({ children }) => {
+export const ToastProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
